@@ -1,5 +1,4 @@
 from flask import Flask
-from config import DevelopmentConfig
 
 def create_app():
 
@@ -7,7 +6,13 @@ def create_app():
     app = Flask(__name__, static_folder='../static/dist', template_folder='../static/templates')
 
     # configuration
-    app.config.from_object(DevelopmentConfig)
+    if devConfig.is_file():
+        from instance.devConfig import DevelopmentConfig
+        app.config.from_object(DevelopmentConfig)
+
+    elif prodConfig.is_file():
+        from instance.prodConfig import ProductionConfig
+        app.config.from_object(ProductionConfig)
 
     # views
     with app.app_context():

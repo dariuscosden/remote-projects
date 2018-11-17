@@ -1,23 +1,26 @@
-venv/
-
+# python files
 *.pyc
 __pycache__/
-
-instancee/
-
 .pytest_cache/
+
+# flask
+.flaskenv
+instance/
+
+# react
+node_modules/
+
+# vscode files
+.vscode/
+*.code-workspace
+
+# personal files
+checklist.txt
+notes.txt
+
+# misc
 .coverage
 htmlcov/
-
-dist/
 build/
 *.egg-info/
-
 .DS_Store
-
-.flaskenv
-confige.py
-
-.vscode/
-
-checklist.txt

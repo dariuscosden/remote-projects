@@ -1,59 +1,34 @@
+/* global */
+body {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+h1 {
+  font-size: 3em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.5em;
+}
+p {
+  margin: 15px 0;
+}
+a {
+  text-decoration: none;
+}
+
 /* display */
 .none {
   display: none;
-}
-
-/* grid */
-.container {
-  width: 80%;
-  margin: 0 10%;
-}
-.containerFluid {
-  width: 100%;
-}
-.container50 {
-  width: 50%;
-  margin: 0 25%;
-}
-.container70 {
-  width: 70%;
-  margin: 0 15%;
-}
-.row15 {
-  margin-bottom: 15px;
-}
-.row15-s {
-  margin-bottom: 15px;
-}
-.row15-m {
-  margin-bottom: 15px;
-}
-.row25 {
-  margin-bottom: 25px;
-}
-.row25-s {
-  margin-bottom: 25px;
-}
-.row25-m {
-  margin-bottom: 25px;
-}
-.row50 {
-  margin-bottom: 50px;
-}
-.row50-s {
-  margin-bottom: 50px;
-}
-.row50-m {
-  margin-bottom: 50px;
-}
-.row100 {
-  margin-bottom: 100px;
-}
-.row100-s {
-  margin-bottom: 100px;
-}
-.row100-m {
-  margin-bottom: 100px;
 }
 
 /* positions */
@@ -64,23 +39,28 @@
 /* widths */
 .width33 {
   width: 33%;
-  margin: 0 10%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .width50 {
   width: 50%;
-  margin: 0 25%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 .width60 {
   width: 60%;
-  margin: 0 20%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 .width70 {
   width: 70%;
-  margin: 0 15%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 .width80 {
   width: 80%;
-  margin: 0 10%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .width100 {
   width: 100%;
@@ -91,7 +71,54 @@
   height: 100vh;
 }
 
-/* margins */
+/* vertical margins */
+.m10b {
+  margin-bottom: 10px;
+}
+.m10b-s {
+  margin-bottom: 10px;
+}
+.m10b-m {
+  margin-bottom: 10px;
+}
+.m15b {
+  margin-bottom: 15px;
+}
+.m15b-s {
+  margin-bottom: 15px;
+}
+.m15b-m {
+  margin-bottom: 15px;
+}
+.m25b {
+  margin-bottom: 25px;
+}
+.m25b-s {
+  margin-bottom: 25px;
+}
+.m25b-m {
+  margin-bottom: 25px;
+}
+.m50b {
+  margin-bottom: 50px;
+}
+.m50b-s {
+  margin-bottom: 50px;
+}
+.m50b-m {
+  margin-bottom: 50px;
+}
+.m100b {
+  margin-bottom: 100px;
+}
+.m100b-s {
+  margin-bottom: 100px;
+}
+.m100b-m {
+  margin-bottom: 100px;
+}
+
+/* horizontal margins */
 .m5l {
   margin-left: 5px;
 }
@@ -470,19 +497,17 @@
 
 /* 768 px (medium) */
 @media only screen and (max-width: 768px) {
-  /* rows */
-  .row15-m {
-    margin-bottom: 15px;
+  /* global */
+  h1 {
+    font-size: 2.5em;
   }
-  .row25-m {
-    margin-bottom: 20px;
+  h2 {
+    font-size: 1.7em;
   }
-  .row50-m {
-    margin-bottom: 35px;
+  h3 {
+    font-size: 1.3em;
   }
-  .row100-m {
-    margin-bottom: 75px;
-  }
+
   /* text */
   .text-left-m,
   .text-right-m {
@@ -500,10 +525,33 @@
     font-size: 2.5em;
   }
 
-  /* margins */
+  /* vertical margins */
+  .m10b_m {
+    margin-bottom: 10px;
+  }
+  .m15b_m {
+    margin-bottom: 15px;
+  }
+  .m20b_m {
+    margin-bottom: 20px;
+  }
+  .m15b-m {
+    margin-bottom: 10px;
+  }
+  .m25b-m {
+    margin-bottom: 20px;
+  }
+  .m50b-m {
+    margin-bottom: 35px;
+  }
+  .m100b-m {
+    margin-bottom: 75px;
+  }
+
+  /* horizontal margins */
   .m10l-m,
   .m10r-m {
-    margin: 0 0 20px 0;
+    margin: 0;
   }
 
   /* widths */
@@ -540,24 +588,17 @@
 
 /* 576 px (small) */
 @media only screen and (max-width: 576px) {
-  /* rows */
-  .row15-s {
-    margin-bottom: 10px;
+  /* global */
+  h1 {
+    font-size: 2em;
   }
-  .row25-s {
-    margin-bottom: 15px;
+  h2 {
+    font-size: 1.5em;
   }
-  .row50-s {
-    margin-bottom: 25px;
+  h3 {
+    font-size: 1.1em;
   }
-  .row100-s {
-    margin-bottom: 50px;
-  }
-  /* container */
-  .container {
-    width: 90%;
-    margin: 0 5%;
-  }
+
   /* text */
   .text-left-s,
   .text-right-s {
@@ -578,24 +619,51 @@
     font-size: 2em;
   }
 
+  /* vertical margins */
+  .m10b_s {
+    margin-bottom: 10px;
+  }
+  .m15b_s {
+    margin-bottom: 15px;
+  }
+  .m15b-s {
+    margin-bottom: 5px;
+  }
+  .m20b_s {
+    margin-bottom: 20px;
+  }
+
+  .m25b-s {
+    margin-bottom: 15px;
+  }
+  .m50b-s {
+    margin-bottom: 25px;
+  }
+  .m100b-s {
+    margin-bottom: 50px;
+  }
+
   /* widths */
   .width50 {
     width: 90%;
-    margin: 0 5%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
   .width60 {
     width: 90%;
-    margin: 0 5%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
   .width80 {
     width: 90%;
-    margin: 0 5%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   /* margins */
   .m10l-s,
   .m10r-s {
-    margin: 0 0 10px 0;
+    margin: 0;
   }
 
   /* widths */

@@ -1,8 +1,11 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import DemoComponent from './DemoComponent';
 
-export default class App extends React.Component {
-    render () {
-        return <h1>Hello World!</h1>;
-    }
+// main app component
+class App extends React.Component {
+  render() {
+    return <DemoComponent />;
+  }
 }
+
+export default App;

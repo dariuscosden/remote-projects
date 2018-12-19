@@ -1,3 +1,7 @@
-h1 {
-  font-size: 10em;
+/* global */
+body {
+  font-family: Roboto, sans-serif;
+}
+p {
+  line-height: 2em;
 }

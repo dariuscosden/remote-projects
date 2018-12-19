@@ -1,6 +1,6 @@
 const path = require('path');
 const config = {
-  entry: __dirname + '/react/index.jsx',
+  entry: ['babel-polyfill', __dirname + '/react/index.jsx'],
   output: {
     path: path.resolve(__dirname, 'dist/js'),
     publicPath: '/dist/js/',

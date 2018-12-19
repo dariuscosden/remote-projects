@@ -1,7 +1,7 @@
 {
-  "name": "ouatedephoque",
+  "name": "project-name",
   "version": "1.0.0",
-  "description": "Ouate de phoque website built with reactJS & Flask",
+  "description": "Project description",
   "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "babel-polyfill": "^6.26.0",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"

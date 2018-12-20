@@ -1,9 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { testAction, testAction2 } from '../redux/actions/postActions';
 
 class DemoComponent extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  componentWillMount() {
+    this.props.testAction();
+    this.props.testAction2();
+  }
+
   render() {
     return (
       <section id="demoComponent">
@@ -80,4 +89,11 @@ class DemoComponent extends React.Component {
   }
 }
 
-export default DemoComponent;
+const mapStateToProps = state => ({
+  actions: state.actions
+});
+
+export default connect(
+  mapStateToProps,
+  { testAction, testAction2 }
+)(DemoComponent);

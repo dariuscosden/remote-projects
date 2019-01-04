@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { testAction, testAction2 } from '../redux/actions/postActions';
 

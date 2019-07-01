@@ -1,13 +1,14 @@
 const path = require('path');
+
 const config = {
-  entry: ['babel-polyfill', __dirname + '/react/index.jsx'],
+  entry: ['babel-polyfill', __dirname + '/src/index.jsx'],
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
-    publicPath: '/dist/js/',
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'assets/js'),
+    publicPath: 'assets/js/',
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -19,13 +20,13 @@ const config = {
             loader: 'babel-loader',
             query: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['@babel/plugin-proposal-class-properties']
-            }
-          }
-        ]
-      }
-    ]
-  }
+              plugins: ['@babel/plugin-proposal-class-properties'],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 module.exports = config;

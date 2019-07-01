@@ -2,23 +2,20 @@ from flask import Flask
 from pathlib import Path
 import os
 
+
 def create_app():
 
     # creates the app
-    app = Flask(__name__, static_folder='../static/dist', template_folder='../static/templates')
+    app = Flask(__name__, static_folder='../assets',
+                template_folder='../templates')
 
-    # configuration
-    devConfig = Path(os.path.join(app.instance_path, 'devConfig.py'))
-    prodConfig = Path(os.path.join(app.instance_path, 'prodConfig.py'))
+    # loads config
+    config = Path(os.path.join(app.instance_path, 'config.py'))
 
-    # dev over prod
-    if devConfig.is_file():
-        from instance.devConfig import DevelopmentConfig
-        app.config.from_object(DevelopmentConfig)
+    from instance.config import DevConfig
 
-    elif prodConfig.is_file():
-        from instance.prodConfig import ProductionConfig
-        app.config.from_object(ProductionConfig)
+    # dev config
+    app.config.from_object(DevConfig)
 
     # views
     with app.app_context():

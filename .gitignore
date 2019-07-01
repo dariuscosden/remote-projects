@@ -10,6 +10,11 @@ instance/
 # react
 node_modules/
 
+# scss
+*.map
+main/*.css
+.sass-cache/
+
 # vscode files
 .vscode/
 *.code-workspace

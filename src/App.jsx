@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import DemoComponent from './DemoComponent';
-import store from '../redux/store';
+import store from './state/store';
 
-// main app component
+import Main from './main/Main';
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <DemoComponent />
+        <Main />
       </Provider>
     );
   }

@@ -5,7 +5,7 @@ __pycache__/
 
 # flask
 .flaskenv
-instance/
+# instance/ UNCOMMENT WHEN STARTING A PROJECT
 
 # react
 node_modules/

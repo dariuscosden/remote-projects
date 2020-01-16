@@ -15,6 +15,13 @@
   align-items: center;
 }
 
+@mixin flex-clr-c-c() {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin flex-cl-fs-c() {
   display: flex;
   flex-direction: column;
@@ -55,6 +62,13 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+@mixin flex-cl-sb-fs() {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 @mixin flex-cl-sb-fe() {

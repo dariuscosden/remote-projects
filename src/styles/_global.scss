@@ -6,7 +6,9 @@ body {
   font-family: avenir;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
@@ -14,18 +16,6 @@ h1 {
   height: 100vh;
 }
 
-.content {
-  @include flex-cl-sb-c;
-  height: 100%;
-  width: 100%;
-}
-
-.content-body {
-  @include container;
-  @include top-padding;
-  height: 100%;
-}
-
-.content-footer {
-  @include container;
+.main-green {
+  color: $main-green;
 }

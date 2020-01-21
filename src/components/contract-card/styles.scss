@@ -1,0 +1,60 @@
+// components - contract-card
+//
+
+.contract-card {
+  @include flex-rw-sb-c;
+  transition: all 0.1s ease;
+  border: 1px solid $light-gray;
+  width: 100%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  background-color: $light-green;
+  border-radius: 3px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $light-green-hover;
+  }
+
+  .left {
+    width: 50%;
+  }
+
+  .middle {
+    width: 30%;
+  }
+
+  .right {
+    width: 20%;
+    text-align: center;
+  }
+}
+
+.contract-card__restrictions {
+  color: red;
+  font-weight: bold;
+}
+
+.contract-card__title {
+  margin: 10px 0;
+  color: $dark-gray;
+}
+
+.contract-card__location {
+  font-style: italic;
+  line-height: 25px;
+
+  i {
+    margin-right: 5px;
+    color: $main-green;
+  }
+}
+
+.contract-card__date {
+  font-weight: bold;
+}
+
+.contract-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -3,7 +3,9 @@ body {
   font-family: avenir;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
@@ -11,29 +13,8 @@ h1 {
   height: 100vh;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.content-body {
-  width: 100%;
-  max-width: 1500px;
-  padding: 0 20px;
-  box-sizing: border-box;
-  padding-top: 100px;
-  height: 100%;
-}
-
-.content-footer {
-  width: 100%;
-  max-width: 1500px;
-  padding: 0 20px;
-  box-sizing: border-box;
+.main-green {
+  color: #1abc9c;
 }
 
 .header__container {
@@ -46,6 +27,10 @@ h1 {
 }
 
 .header-content__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   max-width: 1500px;
   margin: auto;
   padding: 20px;
@@ -109,6 +94,132 @@ h1 {
   margin-left: 10px;
 }
 
+.contract-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.1s ease;
+  border: 1px solid #f2f5f4;
+  width: 100%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  background-color: #f2f5f4;
+  border-radius: 3px;
+}
+.contract-card:hover {
+  cursor: pointer;
+  background-color: #e3e6e5;
+}
+.contract-card .left {
+  width: 50%;
+}
+.contract-card .middle {
+  width: 30%;
+}
+.contract-card .right {
+  width: 20%;
+  text-align: center;
+}
+
+.contract-card__restrictions {
+  color: red;
+  font-weight: bold;
+}
+
+.contract-card__title {
+  margin: 10px 0;
+  color: #1f1f1f;
+}
+
+.contract-card__location {
+  font-style: italic;
+  line-height: 25px;
+}
+.contract-card__location i {
+  margin-right: 5px;
+  color: #1abc9c;
+}
+
+.contract-card__date {
+  font-weight: bold;
+}
+
+.contract-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-bg {
+  width: 100%;
+  background-color: #f2f5f4;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 250px;
+}
+
+.footer-top__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-top__column.right {
+  text-align: right;
+  max-width: 300px;
+  align-items: flex-end;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  background-color: white;
+  text-align: center;
+}
+.footer-bottom span {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.footer-bottom img {
+  width: 70px;
+  margin-right: 5px;
+}
+
+.tag-card {
+  display: inline-block;
+  color: white;
+  background-color: #1abc9c;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
 .text-input {
   position: relative;
   width: 100%;
@@ -118,7 +229,7 @@ input[type=text] {
   width: 100%;
   border: none;
   outline: none;
-  padding: 10px 10px;
+  padding: 10px 15px;
   font-size: 16px;
   box-sizing: border-box;
   transition: box-shadow 150ms ease-out;
@@ -140,8 +251,13 @@ label {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.homepage {
-  padding-top: 100px;
+#particles-js {
+  box-shadow: 0 0 10px black;
+  position: absolute;
+  height: 600px;
+  width: 100%;
+  z-index: -1;
+  background-color: #1f1f1f;
 }
 
 .homepage-header {
@@ -151,6 +267,7 @@ label {
   align-items: center;
   width: 100%;
   color: white;
+  height: 600px;
 }
 .homepage-header h1 {
   font-size: 75px;
@@ -168,13 +285,17 @@ label {
   background-color: black;
 }
 
-#particles-js {
-  box-shadow: 0 0 10px black;
-  position: absolute;
-  height: 600px;
+.homepage-contracts {
   width: 100%;
-  z-index: -1;
-  background-color: #1f1f1f;
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  padding-top: 50px;
+  margin-bottom: 100px;
+}
+.homepage-contracts h1 {
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=styles.css.map */

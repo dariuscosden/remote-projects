@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 // internal dependencies
 //
@@ -6,17 +7,26 @@ import Header from 'components/header';
 import Button from 'components/button';
 import ButtonGroup from 'components/button-group';
 import TextInput from 'components/text-input';
+import ContractCard from 'components/contract-card';
+import Footer from 'components/footer';
+
+import { fetchContracts } from 'state/contracts/actions';
 
 const Homepage = (props) => {
+  const { contracts, homepage, fetchContracts } = props;
+
   // particles js
   useEffect(() => {
     particlesJS.load(
       'particles-js',
       'assets/js/particles-js/particles.json',
-      function() {
-        console.log('callback - particles.js config loaded');
-      },
+      function() {},
     );
+  }, []);
+
+  // contracts
+  useEffect(() => {
+    fetchContracts();
   }, []);
 
   return (
@@ -30,16 +40,47 @@ const Homepage = (props) => {
           <h1>Remote Contracts.</h1>
           <p>Find fixed-term, remote contract work. No permanent jobs.</p>
 
-          <TextInput placeholder="ex. react" />
+          <TextInput placeholder="ex. react, vuejs, python, go, php" />
 
           <ButtonGroup>
-            <Button secondary text="Post a contract for $299" />
+            <Button secondary text="Post a contract for $199" />
             <Button text="Find a contract" />
           </ButtonGroup>
         </div>
+
+        <div className="homepage-contracts">
+          <h1>Contracts</h1>
+          {homepage.fetched ? (
+            <>
+              {homepage.contracts.map((c) => {
+                const contract = contracts[c];
+                return <ContractCard key={c} contract={contract} />;
+              })}
+            </>
+          ) : (
+            <span>Loading...</span>
+          )}
+        </div>
       </div>
+
+      <Footer />
     </>
   );
 };
 
-export default Homepage;
+const mapStateToProps = (state) => ({
+  contracts: state.entities.contracts,
+  homepage: state.homepage,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchContracts: () => dispatch(fetchContracts()),
+    dispatch,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Homepage);

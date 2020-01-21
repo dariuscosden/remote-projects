@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import mainReducer from './main/reducer';
+import entities from './entities/reducer';
+import homepage from './homepage/reducer';
 
 export default combineReducers({
-  mainReducer,
+  entities,
+  homepage,
 });

@@ -1,4 +1,5 @@
 from flask import Flask
+from server.database import db
 from pathlib import Path
 import os
 
@@ -26,5 +27,19 @@ def create_app():
     # views
     with app.app_context():
         from server import views
+
+        # contracts
+        from server.contracts import api as contracts_api
+        app.register_blueprint(contracts_api.bp)
+
+    # databbase
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
+
+    # test data
+    with app.app_context():
+        from server.test_data import inject_test_data
+        inject_test_data()
 
     return app

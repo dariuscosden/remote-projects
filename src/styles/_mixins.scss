@@ -24,7 +24,8 @@
 
 @mixin container {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1000px;
+  margin: auto;
   padding: 0 20px;
   box-sizing: border-box;
 }

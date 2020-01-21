@@ -1,0 +1,31 @@
+// styles - Global
+//
+
+body {
+  margin: 0;
+  font-family: avenir;
+}
+
+h1 {
+  margin: 0;
+}
+
+#app {
+  height: 100vh;
+}
+
+.content {
+  @include flex-cl-sb-c;
+  height: 100%;
+  width: 100%;
+}
+
+.content-body {
+  @include container;
+  @include top-padding;
+  height: 100%;
+}
+
+.content-footer {
+  @include container;
+}

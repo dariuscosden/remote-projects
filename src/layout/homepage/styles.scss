@@ -1,0 +1,39 @@
+// layout - Homepage
+//
+
+.homepage {
+  @include top-padding;
+}
+
+.homepage-header {
+  @include flex-cl-c-c;
+  width: 100%;
+  color: white;
+
+  h1 {
+    font-size: 75px;
+  }
+
+  p {
+    margin-bottom: 40px;
+  }
+
+  .text-input {
+    margin-bottom: 40px;
+    max-width: 400px;
+  }
+}
+
+.homepage-particles {
+  width: 100%;
+  background-color: black;
+}
+
+#particles-js {
+  @include shadow-full;
+  position: absolute;
+  height: 600px;
+  width: 100%;
+  z-index: -1;
+  background-color: $dark-gray;
+}

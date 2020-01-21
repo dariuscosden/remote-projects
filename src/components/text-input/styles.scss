@@ -1,0 +1,35 @@
+// components - text-input
+//
+
+.text-input {
+  position: relative;
+  width: 100%;
+}
+
+input[type='text'] {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: box-shadow 150ms ease-out;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 50px;
+  background-color: transparent;
+
+  &.is-focused {
+    border: 2px solid $main-green;
+    transition: all 0.15s ease;
+  }
+
+  &:placeholder {
+    color: white;
+  }
+}
+
+label {
+  font-size: 16px;
+  color: $black-50;
+}

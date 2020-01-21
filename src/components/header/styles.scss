@@ -1,6 +1,18 @@
 // components - header
 //
 
+.header__container {
+  position: fixed;
+  width: 100%;
+}
+
 .header {
-  background-color: blue;
+  color: white;
+}
+
+.header-content__wrapper {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }

@@ -3,6 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 
 // internal dependencies
 //
+import Header from 'components/header';
 import Homepage from './homepage';
 
 const Layout = (props) => {

@@ -1,2 +1,45 @@
 // styles - mixins
 //
+
+// padding ===============
+//
+
+@mixin top-padding {
+  padding-top: 100px;
+}
+
+// shadows ===============
+//
+
+@mixin shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@mixin shadow-full {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+// containers ==================
+//
+
+@mixin container {
+  width: 100%;
+  max-width: 1500px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+// buttons ===============
+//
+
+@mixin button-base-styles {
+  display: block;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}

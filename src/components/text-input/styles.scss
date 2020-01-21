@@ -4,6 +4,22 @@
 .text-input {
   position: relative;
   width: 100%;
+
+  .label {
+    margin-bottom: 7px;
+  }
+
+  .input {
+    margin-bottom: 7px;
+  }
+
+  .placeholder {
+    color: $black-50;
+
+    &.error {
+      color: red;
+    }
+  }
 }
 
 input[type='text'] {
@@ -15,21 +31,29 @@ input[type='text'] {
   box-sizing: border-box;
   transition: box-shadow 150ms ease-out;
   position: relative;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 50px;
   background-color: transparent;
 
-  &.is-focused {
-    border: 2px solid $main-green;
-    transition: all 0.15s ease;
+  &.is-white {
+    border: 1px solid $light-green;
   }
 
-  &:placeholder {
-    color: white;
+  &.is-focused {
+    border: 1px solid $main-green;
+  }
+
+  &.is-errored {
+    border: 1px solid red;
+  }
+
+  &.is-filled {
+    border: 1px solid $main-green;
+    background: url(/assets/img/shared/check.svg) no-repeat scroll 98% 10px;
+    background-size: 20px;
   }
 }
 
 label {
   font-size: 16px;
-  color: $black-50;
 }

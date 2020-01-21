@@ -4,6 +4,7 @@ from flask import render_template, url_for, send_from_directory
 
 # main route
 @app.route('/')
-def index():
+@app.route('/<path>')
+def index(path=None):
 
     return render_template('index.html')

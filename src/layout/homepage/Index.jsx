@@ -10,6 +10,8 @@ import TextInput from 'components/text-input';
 import ContractCard from 'components/contract-card';
 import Footer from 'components/footer';
 
+import history from 'utils/history';
+
 import { fetchContracts } from 'state/contracts/actions';
 
 const Homepage = (props) => {
@@ -43,7 +45,11 @@ const Homepage = (props) => {
           <TextInput placeholder="ex. react, vuejs, python, go, php" />
 
           <ButtonGroup>
-            <Button secondary text="Post a contract for $199" />
+            <Button
+              secondary
+              text="Post a contract for $249"
+              onClick={() => history.push('/post')}
+            />
             <Button text="Find a contract" />
           </ButtonGroup>
         </div>

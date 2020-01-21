@@ -4,6 +4,8 @@ import React from 'react';
 //
 import Button from 'components/button';
 
+import history from 'utils/history';
+
 const Header = (props) => {
   return (
     <>
@@ -17,7 +19,11 @@ const Header = (props) => {
             </div>
 
             <div className="right">
-              <Button secondary text="Post A Contract" />
+              <Button
+                secondary
+                text="Post A Contract"
+                onClick={() => history.push('/post')}
+              />
             </div>
           </div>
         </div>

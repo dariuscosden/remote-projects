@@ -1,0 +1,15 @@
+// layout - post
+//
+
+.post {
+  @include container;
+  padding-top: 100px;
+}
+
+.post__headline {
+  margin-bottom: 20px;
+}
+
+.post-form__row {
+  margin-bottom: 20px;
+}

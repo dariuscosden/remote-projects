@@ -3,12 +3,12 @@ from server.database import db
 tags = db.Table('tags',
                 db.Column('tag_id', db.Integer, db.ForeignKey(
                     'tag.id'), primary_key=True),
-                db.Column('contract_id', db.Integer, db.ForeignKey(
-                    'contract.id'), primary_key=True)
+                db.Column('project_id', db.Integer, db.ForeignKey(
+                    'project.id'), primary_key=True)
                 )
 
 
-class Contract(db.Model):
+class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
@@ -24,12 +24,12 @@ class Contract(db.Model):
 
     # tags relationship
     tags = db.relationship('Tag', secondary=tags, lazy='subquery',
-                           backref=db.backref('contracts', lazy=True))
+                           backref=db.backref('projects', lazy=True))
 
     # serializes
     @property
     def serialize(self):
-        json_contract = {
+        json_project = {
             "id": self.id,
             "title": self.title,
             "location": self.location,
@@ -40,11 +40,11 @@ class Contract(db.Model):
             "modified_at": self.modified_at,
         }
 
-        return json_contract
+        return json_project
 
     # repr
     def __repr__(self):
-        return "<Contract - {}>".format(self.title)
+        return "<Project - {}>".format(self.title)
 
 
 class Tag(db.Model):
@@ -79,8 +79,8 @@ class Company(db.Model):
     created_at = db.Column(db.Float, nullable=False)
     modified_at = db.Column(db.Float, nullable=False)
 
-    # contracts relationship
-    contracts = db.relationship('Contract', backref='company', lazy=True)
+    # projects relationship
+    projects = db.relationship('Project', backref='company', lazy=True)
 
     # serializes
     @property

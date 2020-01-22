@@ -7,15 +7,15 @@ import Header from 'components/header';
 import Button from 'components/button';
 import ButtonGroup from 'components/button-group';
 import TextInput from 'components/text-input';
-import ContractCard from 'components/contract-card';
+import ProjectCard from 'components/project-card';
 import Footer from 'components/footer';
 
 import history from 'utils/history';
 
-import { fetchContracts } from 'state/contracts/actions';
+import { fetchProjects } from 'state/projects/actions';
 
 const Homepage = (props) => {
-  const { contracts, homepage, fetchContracts } = props;
+  const { projects, homepage, fetchProjects } = props;
 
   // particles js
   useEffect(() => {
@@ -26,9 +26,9 @@ const Homepage = (props) => {
     );
   }, []);
 
-  // contracts
+  // projects
   useEffect(() => {
-    fetchContracts();
+    fetchProjects();
   }, []);
 
   return (
@@ -39,7 +39,7 @@ const Homepage = (props) => {
 
       <div className="homepage">
         <div className="homepage-header">
-          <h1>Remote Contracts.</h1>
+          <h1>Remote Projects.</h1>
           <p>Find fixed-term, remote contract work. No permanent jobs.</p>
 
           <TextInput placeholder="ex. react, vuejs, python, go, php" />
@@ -47,20 +47,20 @@ const Homepage = (props) => {
           <ButtonGroup>
             <Button
               secondary
-              text="Post a contract for $249"
+              text="Post a project for $249"
               onClick={() => history.push('/post')}
             />
-            <Button text="Find a contract" />
+            <Button text="Find a project" />
           </ButtonGroup>
         </div>
 
-        <div className="homepage-contracts">
-          <h1>Contracts</h1>
+        <div className="homepage-projects">
+          <h1>Projects</h1>
           {homepage.fetched ? (
             <>
-              {homepage.contracts.map((c) => {
-                const contract = contracts[c];
-                return <ContractCard key={c} contract={contract} />;
+              {homepage.projects.map((c) => {
+                const project = projects[c];
+                return <ProjectCard key={c} project={project} />;
               })}
             </>
           ) : (
@@ -75,13 +75,13 @@ const Homepage = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  contracts: state.entities.contracts,
+  projects: state.entities.projects,
   homepage: state.homepage,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchContracts: () => dispatch(fetchContracts()),
+    fetchProjects: () => dispatch(fetchProjects()),
     dispatch,
   };
 };

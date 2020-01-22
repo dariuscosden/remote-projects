@@ -28,9 +28,9 @@ def create_app():
     with app.app_context():
         from server import views
 
-        # contracts
-        from server.contracts import api as contracts_api
-        app.register_blueprint(contracts_api.bp)
+        # projects
+        from server.projects import api as projects_api
+        app.register_blueprint(projects_api.bp)
 
     # databbase
     with app.app_context():

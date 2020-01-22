@@ -14,14 +14,14 @@ const Header = (props) => {
           <div className="header-content__wrapper">
             <div className="left">
               <h2>
-                Remote <span className="main-green">Contracts</span>.
+                Remote <span className="main-green">Projects</span>.
               </h2>
             </div>
 
             <div className="right">
               <Button
                 secondary
-                text="Post A Contract"
+                text="Post A Project"
                 onClick={() => history.push('/post')}
               />
             </div>

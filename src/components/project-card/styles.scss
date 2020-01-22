@@ -1,7 +1,7 @@
-// components - contract-card
+// components - project-card
 //
 
-.contract-card {
+.project-card {
   @include flex-rw-sb-c;
   transition: all 0.1s ease;
   border: 1px solid $light-gray;
@@ -30,17 +30,17 @@
   }
 }
 
-.contract-card__restrictions {
+.project-card__restrictions {
   color: red;
   font-weight: bold;
 }
 
-.contract-card__title {
+.project-card__title {
   margin: 10px 0;
   color: $dark-gray;
 }
 
-.contract-card__location {
+.project-card__location {
   font-style: italic;
   line-height: 25px;
 
@@ -50,11 +50,11 @@
   }
 }
 
-.contract-card__date {
+.project-card__date {
   font-weight: bold;
 }
 
-.contract-card__tags {
+.project-card__tags {
   display: flex;
   flex-wrap: wrap;
 }

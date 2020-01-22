@@ -2,7 +2,7 @@
 //
 
 const initialState = {
-  contracts: {},
+  projects: {},
   companies: {},
   tags: {},
 };
@@ -12,13 +12,13 @@ export default function(state = initialState, action) {
   const { payload } = action;
   let newState = {
     ...state,
-    contracts: { ...state.contracts },
+    projects: { ...state.projects },
     companies: { ...state.companies },
     tags: { ...state.tags },
   };
 
   switch (action.type) {
-    case 'FETCH_CONTRACTS_SUCCESS':
+    case 'FETCH_PROJECTS_SUCCESS':
       return _.merge(newState, payload.entities);
   }
 

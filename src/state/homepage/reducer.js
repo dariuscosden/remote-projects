@@ -3,15 +3,15 @@
 
 const initialState = {
   fetched: false,
-  contracts: [],
+  projects: [],
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case 'FETCH_CONTRACTS_SUCCESS': {
+    case 'FETCH_PROJECTS_SUCCESS': {
       return Object.assign({}, state, {
         fetched: true,
-        contracts: [action.payload.result],
+        projects: [action.payload.result],
       });
     }
   }

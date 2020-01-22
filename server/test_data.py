@@ -1,16 +1,16 @@
 from flask import current_app as app
 from server.database import db
-from server.models import Contract, Company, Tag
+from server.models import Project, Company, Tag
 from server.functions import get_unix
 
 
 def inject_test_data():
 
-    if not Contract.query.all():
+    if not Project.query.all():
 
-        # contract
-        contract = Contract(
-            title="Test Contract",
+        # project
+        project = Project(
+            title="Test Project",
             location="Frankfurt, Germany",
             description="Test Description",
             restrictions="Europe Only",
@@ -31,7 +31,7 @@ def inject_test_data():
 
         db.session.add(company)
 
-        company.contracts.append(contract)
+        company.projects.append(project)
 
         # tags
         tag1 = Tag(
@@ -54,9 +54,9 @@ def inject_test_data():
         db.session.add(tag2)
         db.session.add(tag3)
 
-        contract.tags.append(tag1)
-        contract.tags.append(tag2)
-        contract.tags.append(tag3)
+        project.tags.append(tag1)
+        project.tags.append(tag2)
+        project.tags.append(tag3)
 
         db.session.commit()
 

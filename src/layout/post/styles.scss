@@ -6,10 +6,39 @@
   padding-top: 100px;
 }
 
+.post-form {
+}
+
 .post__headline {
   margin-bottom: 20px;
 }
 
+.post-form__content {
+  margin-bottom: 40px;
+  border-radius: 10px;
+
+  input[type='text'] {
+    border-color: $light-green-dark;
+    border-radius: 10px;
+
+    &.is-focused {
+      border-color: $main-green;
+    }
+
+    &.is-errored {
+      border-color: red;
+    }
+
+    &.is-filled {
+      border-color: $main-green;
+    }
+  }
+}
+
 .post-form__row {
   margin-bottom: 20px;
+
+  &.centered {
+    @include flex-rw-c-c;
+  }
 }

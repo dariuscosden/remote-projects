@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 // external dependencies
 //
 const classNames = require('classnames');
 
 const TextInput = (props) => {
-  const { name, label, defaultValue, placeholder, white, required } = props;
+  const mounted = useRef();
+
+  const {
+    name,
+    label,
+    defaultValue,
+    placeholder,
+    white,
+    required,
+    disabled,
+    error,
+    onChange,
+  } = props;
+
+  // firstBlur
+  const [firstBlur, setFirstBlur] = useState(false);
 
   // value
   const [value, setValue] = useState(defaultValue || '');
@@ -13,10 +28,7 @@ const TextInput = (props) => {
   // focused
   const [focused, setFocused] = useState(false);
 
-  // errored
-  const [error, setError] = useState(false);
-
-  // filleded
+  // filled
   const [filled, setFilled] = useState(false);
 
   // input
@@ -33,31 +45,48 @@ const TextInput = (props) => {
     'is-focused': focused,
   });
 
-  const validateInput = (e) => {
-    const { validate } = props;
+  // handles input change
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
 
-    const value = e.target.value;
+    if (!firstBlur && error) setFirstBlur(true);
 
-    // removes focus
-    setFocused(false);
+    if ((onChange && firstBlur) || error) onChange(e);
 
-    // validates
-    if (validate) {
-      const errorValue = validate(value);
-
-      if (errorValue) {
-        setError(errorValue);
-        setFilled(false);
-      } else {
-        setError(false);
-        setFilled(true);
-      }
+    if (e.target.value && !error && firstBlur) {
+      setFilled(true);
     } else {
-      if (value) {
-        setFilled(true);
-      }
+      setFilled(false);
     }
   };
+
+  const handleBlur = (e) => {
+    if (!firstBlur) {
+      setFirstBlur(true);
+      onChange(e);
+    }
+
+    if (!e.target.value && !error) {
+      setFocused(false);
+    }
+
+    if (e.target.value && !error) {
+      setFilled(true);
+    }
+  };
+
+  // component did update
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      if (error) {
+        setFilled(false);
+      }
+
+      if (value && !error && firstBlur) setFilled(true);
+    }
+  });
 
   return (
     <div className="text-input">
@@ -74,8 +103,9 @@ const TextInput = (props) => {
           className={inputClassNames}
           value={value}
           onFocus={() => setFocused(true)}
-          onBlur={(e) => validateInput(e)}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => handleInputChange(e)}
+          onBlur={(e) => handleBlur(e)}
+          disabled={disabled}
         />
       </div>
       {error ? (

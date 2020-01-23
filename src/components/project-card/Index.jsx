@@ -5,8 +5,13 @@ import { connect } from 'react-redux';
 //
 import TagCard from 'components/tag-card';
 
+import history from 'utils/history';
+
 const ProjectCard = (props) => {
-  const { project, companies, tags } = props;
+  const { p, projects, companies, tags } = props;
+
+  // project
+  const project = projects[p];
 
   // company
   const company = companies[project.company];
@@ -19,7 +24,10 @@ const ProjectCard = (props) => {
   const date = new Date(project.created_at * 1000);
 
   return (
-    <div className="project-card">
+    <div
+      className="project-card"
+      onClick={() => history.push(`/projects/${project.id}`)}
+    >
       <div className="left">
         <div className="project-card__restrictions">{project.restrictions}</div>
         <div className="project-card__title">
@@ -30,15 +38,14 @@ const ProjectCard = (props) => {
           {company.name}
           <br />
           <i className="fas fa-map-marker-alt" />
-          {project.location}
+          {company.location}
         </div>
       </div>
 
       <div className="middle">
         <div className="contact-card__tags">
           {project.tags.map((t) => {
-            const tag = tags[t];
-            return <TagCard key={t} tag={tag} />;
+            return <TagCard key={t} t={t} />;
           })}
         </div>
       </div>
@@ -53,6 +60,7 @@ const ProjectCard = (props) => {
 };
 
 const mapStateToProps = (state) => ({
+  projects: state.entities.projects,
   companies: state.entities.companies,
   tags: state.entities.tags,
 });

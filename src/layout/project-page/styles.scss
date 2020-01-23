@@ -1,0 +1,84 @@
+// components - project-page
+//
+
+.project-page {
+  @include container;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.project-page__back-button {
+  display: inline-block;
+  color: $main-green;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+.project-page__content {
+  @include flex-rw-sb-fs;
+
+  .left {
+    width: 70%;
+    margin-right: 40px;
+  }
+
+  .right {
+    width: 30%;
+  }
+}
+
+.project-page__date {
+  margin-bottom: 5px;
+  font-style: italic;
+  color: $black-50;
+}
+
+.project-page__title {
+  margin-bottom: 5px;
+  color: $dark-gray;
+}
+
+.project-page__location {
+  font-style: italic;
+  line-height: 25px;
+  margin-bottom: 10px;
+
+  i {
+    margin-right: 5px;
+    color: $main-green;
+  }
+}
+
+.project-page__tags {
+  margin-bottom: 10px;
+}
+
+.project-page__restrictions {
+  margin-bottom: 20px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  span {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.project-page__description {
+  border-top: 1px solid $black-10;
+  border-bottom: 1px solid $black-10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.project-page__box {
+  @include flex-cl-c-c;
+}

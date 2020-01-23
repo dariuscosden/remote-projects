@@ -1,29 +1,7 @@
 // Input validators
 //
 
-// empty
-export const validateEmpty = (value) => {
-  if (value === '') {
-    return 'Field cannot be empty';
-  }
+// standard characters
+export const standardCharacters = /^[a-zA-Z0-9!@#$&()\\-`.+,/\"' ]*$/;
 
-  return false;
-};
-
-// email
-export const validateEmail = (email) => {
-  if (!email.includes('@') || email.split('@').length !== 2) {
-    return 'Please include a valid email address';
-  }
-
-  return false;
-};
-
-// password
-export const validatePassword = (password) => {
-  if (password.length < 6) {
-    return 'Password must be at least 6 characters in length';
-  }
-
-  return false;
-};
+export const standardEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;

@@ -12,4 +12,12 @@ bp = Blueprint('projects', __name__)
 @bp.route('/api/v1/projects')
 def fetch_projects():
 
-    return json.dumps([get_project(c) for c in Project.query.all()])
+    # checks for id
+    project_id = request.args.get('id')
+    if project_id:
+
+        project = Project.query.filter_by(id=project_id).first()
+
+        return json.dumps([get_project(project)])
+
+    return json.dumps([get_project(c) for c in Project.query.order_by(Project.created_at.desc()).all()])

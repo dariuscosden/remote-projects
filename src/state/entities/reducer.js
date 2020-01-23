@@ -18,8 +18,12 @@ export default function(state = initialState, action) {
   };
 
   switch (action.type) {
+    case 'FETCH_TAGS_SUCCESS':
     case 'FETCH_PROJECTS_SUCCESS':
       return _.merge(newState, payload.entities);
+
+    case 'SEND_PROJECT_PREVIEW_SUCCESS':
+      return _.merge(newState, payload.normalizedData.entities);
   }
 
   return state;

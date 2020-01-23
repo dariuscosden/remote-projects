@@ -1,9 +1,24 @@
 import { useState, useEffect, useCallback } from 'react';
 
+// internal dependencies
+//
+import { stripHtml } from 'utils/functions';
+
 const useForm = (stateSchema, validationSchema = {}, callback) => {
   const [state, setState] = useState(stateSchema);
   const [disable, setDisable] = useState(true);
   const [isDirty, setIsDirty] = useState(false);
+
+  // updates fields on initial render
+  useEffect(() => {
+    const formTouched = Object.keys(stateSchema).some((k) => {
+      return stateSchema[k].value !== '';
+    });
+
+    if (formTouched) {
+      updateFields();
+    }
+  }, []);
 
   // Disable button in initial render.
   useEffect(() => {
@@ -44,7 +59,7 @@ const useForm = (stateSchema, validationSchema = {}, callback) => {
 
       let error = '';
       if (validationSchema[name].required) {
-        if (!value) {
+        if (!stripHtml(value)) {
           error = 'This is a required field and cannot be left blank.';
         }
       }

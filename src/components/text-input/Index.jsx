@@ -45,6 +45,13 @@ const TextInput = (props) => {
     'is-focused': focused,
   });
 
+  // checks value on mount
+  useEffect(() => {
+    if (value && !error) {
+      setFilled(true);
+    }
+  }, []);
+
   // handles input change
   const handleInputChange = (e) => {
     setValue(e.target.value);

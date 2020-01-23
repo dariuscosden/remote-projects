@@ -9,9 +9,9 @@ import { normalize } from 'normalizr';
 
 import { projectSchema } from 'utils/schema';
 
-export const fetchProjects = () => (dispatch) => {
+export const fetchProjects = (projectId = null) => (dispatch) => {
   axios
-    .get(`/api/v1/projects`)
+    .get(`/api/v1/projects${projectId ? `?id=${projectId}` : ''}`)
     .then((response) => fetchProjectsSuccess(response.data)(dispatch))
     .catch((error) => fetchProjectsError(error)(dispatch));
 };

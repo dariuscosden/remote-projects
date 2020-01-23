@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 // internal dependencies
@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import Header from 'components/header';
 import Button from 'components/button';
 import ButtonGroup from 'components/button-group';
-import TextInput from 'components/text-input';
 import ProjectCard from 'components/project-card';
 import Footer from 'components/footer';
 
@@ -31,24 +30,45 @@ const Homepage = (props) => {
     fetchProjects();
   }, []);
 
+  // white header
+  const [whiteHeader, setWhiteHeader] = useState(false);
+  useEffect(() => {
+    const turnHeaderWhite = () => {
+      if (window.scrollY >= 100) {
+        setWhiteHeader(true);
+      } else {
+        setWhiteHeader(false);
+      }
+    };
+    document.addEventListener('scroll', turnHeaderWhite);
+
+    return () => {
+      document.removeEventListener('scroll', turnHeaderWhite);
+    };
+  }, []);
+
   return (
     <>
       <div id="particles-js" />
 
-      <Header />
+      <Header white={whiteHeader} />
 
       <div className="homepage">
         <div className="homepage-header">
           <h1>Remote Projects.</h1>
           <p>Find fixed-term, remote contract work. No permanent jobs.</p>
 
-          <TextInput placeholder="ex. react, vuejs, python, go, php" />
+          <input
+            className="search-input"
+            type="text"
+            placeholder="ex. react, vuejs, python, go, php"
+          />
 
           <ButtonGroup>
             <Button
               secondary
               text="Post a project for $249"
-              onClick={() => history.push('/post')}
+              onClick={() => history.push('/post/new-project')}
             />
             <Button text="Find a project" />
           </ButtonGroup>
@@ -58,9 +78,8 @@ const Homepage = (props) => {
           <h1>Projects</h1>
           {homepage.fetched ? (
             <>
-              {homepage.projects.map((c) => {
-                const project = projects[c];
-                return <ProjectCard key={c} project={project} />;
+              {homepage.projects.map((p) => {
+                return <ProjectCard key={p} p={p} />;
               })}
             </>
           ) : (

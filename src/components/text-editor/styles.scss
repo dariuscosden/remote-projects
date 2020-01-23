@@ -22,13 +22,24 @@
     cursor: text;
   }
 
+  &.is-focused {
+    border-color: $main-green;
+  }
+
+  &.is-filled {
+    border-color: $main-green;
+    background: url(/assets/img/shared/check.svg) no-repeat scroll 99% 10px;
+    background-size: 20px;
+  }
+
   &.is-errored {
     border-color: red;
   }
 }
 
 .text-editor__placeholder {
-  color: $black-50;
+  color: $black-40;
+  font-size: 14px;
 }
 
 // rdw

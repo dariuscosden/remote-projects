@@ -14,7 +14,8 @@
   }
 
   .placeholder {
-    color: $black-50;
+    color: $black-40;
+    font-size: 14px;
 
     &.error {
       color: red;

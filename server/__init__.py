@@ -32,6 +32,14 @@ def create_app():
         from server.projects import api as projects_api
         app.register_blueprint(projects_api.bp)
 
+        # tags
+        from server.tags import api as tags_api
+        app.register_blueprint(tags_api.bp)
+
+        # post
+        from server.post import api as post_api
+        app.register_blueprint(post_api.bp)
+
     # databbase
     with app.app_context():
         db.init_app(app)

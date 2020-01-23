@@ -10,8 +10,8 @@ tags = db.Table('tags',
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    published = db.Column(db.Boolean, nullable=False)
     title = db.Column(db.String, nullable=False)
-    location = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     restrictions = db.Column(db.String)
     link = db.Column(db.String, nullable=False)
@@ -19,8 +19,7 @@ class Project(db.Model):
     modified_at = db.Column(db.Float, nullable=False)
 
     # company relationship
-    company_id = db.Column(db.Integer, db.ForeignKey('company.id'),
-                           nullable=False)
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
 
     # tags relationship
     tags = db.relationship('Tag', secondary=tags, lazy='subquery',
@@ -31,8 +30,8 @@ class Project(db.Model):
     def serialize(self):
         json_project = {
             "id": self.id,
+            "published": self.published,
             "title": self.title,
-            "location": self.location,
             "description": self.description,
             "restrictions": self.restrictions,
             "link": self.link,
@@ -72,6 +71,7 @@ class Tag(db.Model):
 
 class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    published = db.Column(db.Boolean, nullable=False)
     name = db.Column(db.String, nullable=False)
     location = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
@@ -87,6 +87,7 @@ class Company(db.Model):
     def serialize(self):
         json_company = {
             "id": self.id,
+            "published": self.published,
             "name": self.name,
             "location": self.location,
             "email": self.email,

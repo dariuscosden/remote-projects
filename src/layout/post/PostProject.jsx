@@ -1,0 +1,254 @@
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
+// internal dependencies
+//
+import useForm from 'components/use-form';
+import TextInput from 'components/text-input';
+import TextEditor from 'components/text-editor';
+import Button from 'components/button';
+import TagInput from 'components/tag-input';
+import Footer from 'components/footer';
+
+import { standardCharacters, standardEmail } from 'utils/input-validators';
+
+import { fetchTags } from 'state/tags/actions';
+import { sendProjectPreview } from 'state/post/actions';
+
+const PostProject = (props) => {
+  const { sendProjectPreview, fetchTags, post, tags } = props;
+
+  const validationStateSchema = {
+    title: {
+      required: true,
+      validator: {
+        regEx: standardCharacters,
+        error: 'You cannot use this character in this field.',
+      },
+    },
+    company_name: {
+      required: true,
+      validator: {
+        regEx: standardCharacters,
+        error: 'You cannot use this character in this field.',
+      },
+    },
+    company_email: {
+      required: true,
+      validator: {
+        regEx: standardEmail,
+        error: 'Please enter a valid email address.',
+      },
+    },
+    company_location: {
+      required: true,
+      validator: {
+        regEx: standardCharacters,
+        error: 'You cannot use this character in this field.',
+      },
+    },
+    restrictions: {
+      required: false,
+      validator: {
+        regEx: /.{1,100}$/,
+        error: 'Please keep the restrictions to under 100 characters.',
+      },
+    },
+    link: {
+      required: true,
+      validator: {
+        regEx: /.{1,200}$/,
+        error: 'Please keep the application link to under 200 characters.',
+      },
+    },
+    description: {
+      required: true,
+      validator: null,
+    },
+    tags: {
+      required: false,
+      validator: null,
+    },
+  };
+
+  // handles suggestions
+  const [suggestions, setSuggestions] = useState([]);
+  useEffect(() => {
+    let suggestionsArray = [];
+
+    post.tags.map((t) => {
+      const tag = tags[t];
+
+      if (tag) {
+        const tagObject = {
+          id: `${tag.id}`,
+          text: tag.name,
+        };
+
+        suggestionsArray.push(tagObject);
+      }
+    });
+
+    setSuggestions(suggestionsArray);
+  }, [tags]);
+
+  const handleSuggestions = (value) => {
+    fetchTags(value);
+  };
+
+  // on tag enter
+  const onTagEnter = (e) => {
+    console.log(e);
+  };
+
+  // handles the submit function
+  const submitCallback = (formState) => {
+    sendProjectPreview(formState, post.projectId);
+  };
+
+  const { state, handleOnChange, handleOnSubmit, disable } = useForm(
+    post.formState,
+    validationStateSchema,
+    submitCallback,
+  );
+
+  return (
+    <>
+      <div className="post">
+        <div className="post__headline">
+          <h1>
+            Post a <span className="main-green">project</span>.
+          </h1>
+        </div>
+
+        <form className="post-form" onSubmit={handleOnSubmit}>
+          <div className="post-form__content">
+            <div className="post-form__row">
+              <TextInput
+                name="title"
+                label="Project Title"
+                placeholder="Something like 'web application front-end' or 'kubernetes implementation'"
+                onChange={handleOnChange}
+                error={state['title'].error}
+                required
+                white
+                defaultValue={post.formState.title.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TextInput
+                name="company_name"
+                label="Company Name"
+                placeholder="Maybe 'Google'?"
+                onChange={handleOnChange}
+                error={state['company_name'].error}
+                required
+                white
+                defaultValue={post.formState.company_name.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TextInput
+                name="company_email"
+                label="Company Email"
+                placeholder="We use this email to identify the company if you've posted before"
+                onChange={handleOnChange}
+                error={state['company_email'].error}
+                required
+                white
+                defaultValue={post.formState.company_email.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TextInput
+                name="company_location"
+                label="Company Location"
+                placeholder="City and country is usually better"
+                onChange={handleOnChange}
+                error={state['company_location'].error}
+                required
+                white
+                defaultValue={post.formState.company_location.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TextInput
+                name="restrictions"
+                label="Restrictions"
+                placeholder="For example: 'Europe Only' or 'UTC -1 to UTC +4'"
+                onChange={handleOnChange}
+                error={state['restrictions'].error}
+                white
+                defaultValue={post.formState.restrictions.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TextInput
+                name="link"
+                label="Application Link"
+                placeholder="Link (or email) to where you want applicants to go"
+                onChange={handleOnChange}
+                error={state['link'].error}
+                required
+                white
+                defaultValue={post.formState.link.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TextEditor
+                name="description"
+                label="Project Description"
+                placeholder="Tell us a little bit about the project"
+                required
+                error={state['description'].error}
+                onChange={handleOnChange}
+                defaultValue={post.formState.description.value}
+              />
+            </div>
+
+            <div className="post-form__row">
+              <TagInput
+                label="Project Tags"
+                placeholder="Add a maximum of 5 tags for this project"
+                suggestions={suggestions}
+                onChange={(e) => handleSuggestions(e)}
+                onTagEnter={handleOnChange}
+                defaultValue={post.formState.tags.value}
+              />
+            </div>
+          </div>
+          <div className="post-form__row centered">
+            <Button text="Preview Your Post" />
+          </div>
+        </form>
+      </div>
+
+      <Footer hideTop />
+    </>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  post: state.post,
+  tags: state.entities.tags,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTags: (value) => dispatch(fetchTags(value)),
+    sendProjectPreview: (formState, projectId) =>
+      dispatch(sendProjectPreview(formState, projectId)),
+    dispatch,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PostProject);

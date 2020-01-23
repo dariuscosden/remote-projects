@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
     case 'FETCH_PROJECTS_SUCCESS': {
       return Object.assign({}, state, {
         fetched: true,
-        projects: [action.payload.result],
+        projects: action.payload.result,
       });
     }
   }

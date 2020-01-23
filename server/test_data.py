@@ -10,8 +10,8 @@ def inject_test_data():
 
         # project
         project = Project(
+            published=True,
             title="Test Project",
-            location="Frankfurt, Germany",
             description="Test Description",
             restrictions="Europe Only",
             link="https://test-link.com",
@@ -21,6 +21,7 @@ def inject_test_data():
 
         # company
         company = Company(
+            published=True,
             name="Test Company",
             location="Frankfurt, Germany",
             email="test@company.com",
@@ -39,6 +40,16 @@ def inject_test_data():
             created_at=get_unix(),
             modified_at=get_unix(),
         )
+        tag1_1 = Tag(
+            name="reactjs",
+            created_at=get_unix(),
+            modified_at=get_unix(),
+        )
+        tag1_2 = Tag(
+            name="react-javascript",
+            created_at=get_unix(),
+            modified_at=get_unix(),
+        )
         tag2 = Tag(
             name="python",
             created_at=get_unix(),
@@ -51,10 +62,14 @@ def inject_test_data():
         )
 
         db.session.add(tag1)
+        db.session.add(tag1_1)
+        db.session.add(tag1_2)
         db.session.add(tag2)
         db.session.add(tag3)
 
         project.tags.append(tag1)
+        project.tags.append(tag1_1)
+        project.tags.append(tag1_2)
         project.tags.append(tag2)
         project.tags.append(tag3)
 

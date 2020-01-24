@@ -1,10 +1,14 @@
 // layout - post
 //
 
+.post-bg {
+  background-color: $light-green;
+  padding-top: 150px;
+  padding-bottom: 50px;
+}
+
 .post {
   @include container;
-  padding-top: 100px;
-  margin-bottom: 100px;
 }
 
 .post-form {
@@ -15,7 +19,12 @@
 }
 
 .post-form__content {
-  margin-bottom: 40px;
+  box-shadow: 0 0 5px $black-30;
+  border-radius: 5px;
+  padding: 40px;
+  margin-bottom: 100px;
+  background-color: white;
+  margin-bottom: 50px;
   border-radius: 10px;
 
   input[type='text'] {
@@ -42,4 +51,53 @@
   &.centered {
     @include flex-rw-c-c;
   }
+}
+
+// post payment
+//
+
+.post-payment__bg {
+  background-color: $light-green;
+  padding-top: 150px;
+  padding-bottom: 50px;
+}
+
+.post-payment__wrapper {
+  @include container;
+}
+
+.post-payment__header {
+  margin-bottom: 20px;
+}
+
+.post-payment__back-button {
+  margin-left: auto;
+  margin-right: auto;
+  color: $main-green;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+.post-payment__content {
+  box-shadow: 0 0 5px $black-30;
+  background-color: white;
+  padding: 40px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.post-payment__button {
+  @include flex-rw-c-c;
+}
+
+// STRIPE ELEMENTS
+.StripeElement {
+  border-radius: 10px;
+  border: 1px solid $light-green-dark;
+  padding: 10px 20px;
 }

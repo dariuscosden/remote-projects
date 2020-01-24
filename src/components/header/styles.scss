@@ -19,10 +19,15 @@
     .button {
       background-color: $main-green;
       color: white;
+
+      &:hover {
+        background-color: $main-green-dark;
+      }
     }
 
     h2 {
       color: black;
+      cursor: pointer;
     }
 
     a {

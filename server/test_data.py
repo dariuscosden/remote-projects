@@ -21,7 +21,6 @@ def inject_test_data():
 
         # company
         company = Company(
-            published=True,
             name="Test Company",
             location="Frankfurt, Germany",
             email="test@company.com",

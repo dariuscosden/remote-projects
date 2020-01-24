@@ -24,6 +24,9 @@ export default function(state = initialState, action) {
 
     case 'SEND_PROJECT_PREVIEW_SUCCESS':
       return _.merge(newState, payload.normalizedData.entities);
+
+    case 'SEND_PUBLISH_PROJECT_SUCCESS':
+      return _.merge(newState, payload.entities);
   }
 
   return state;

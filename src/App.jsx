@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+import { StripeProvider } from 'react-stripe-elements';
 
 import history from 'utils/history';
 
@@ -12,9 +13,11 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router history={history}>
-          <Layout />
-        </Router>
+        <StripeProvider apiKey="pk_test_07RGMUTSho0UwNJpDYUoQBIn00c1TOTRiD">
+          <Router history={history}>
+            <Layout />
+          </Router>
+        </StripeProvider>
       </Provider>
     );
   }

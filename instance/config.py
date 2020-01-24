@@ -20,3 +20,6 @@ class dev_config:
 
     # stops app signaling on any changes
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # stripe
+    STRIPE_API_KEY = 'sk_test_xuFWwTQxtC0E3zqZ0ONRNCjO00M46eaigd'

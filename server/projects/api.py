@@ -20,4 +20,4 @@ def fetch_projects():
 
         return json.dumps([get_project(project)])
 
-    return json.dumps([get_project(c) for c in Project.query.order_by(Project.created_at.desc()).all()])
+    return json.dumps([get_project(p) for p in Project.query.filter(Project.published == True).order_by(Project.created_at.desc()).all()])

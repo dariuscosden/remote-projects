@@ -1,3 +1,4 @@
+from flask import current_app as app
 from flask import Blueprint, request
 from server.models import Project, Company, Tag
 from server.database import db
@@ -5,12 +6,16 @@ from server.functions import get_unix
 from server.error import RequestError, general_error
 from server.projects.helpers import get_project
 import json
+import stripe
+
+# sets stripe api key
+stripe.api_key = app.config['STRIPE_API_KEY']
 
 bp = Blueprint('post', __name__)
 
 
 # creates a project preview
-@bp.route('/api/v1/project-preview', methods=['POST'])
+@bp.route('/api/v1/project_preview', methods=['POST'])
 def project_preview():
 
     # company variables
@@ -18,7 +23,8 @@ def project_preview():
         name = request.form['company_name']
         location = request.form['company_location']
         email = request.form['company_email']
-    except KeyError:
+    except KeyError as e:
+        print(e)
         raise RequestError(general_error, 400)
 
     # checks for existing company
@@ -27,7 +33,6 @@ def project_preview():
     # creates a company
     if not company:
         company = Company(
-            published=False,
             name=name,
             location=location,
             email=email.lower(),
@@ -43,7 +48,8 @@ def project_preview():
         description = request.form['description']
         restrictions = request.form['restrictions']
         link = request.form['link']
-    except KeyError:
+    except KeyError as e:
+        print(e)
         raise RequestError(general_error, 400)
 
     # checks for existing project
@@ -80,7 +86,8 @@ def project_preview():
     # tags variable
     try:
         tags = request.form['tags']
-    except KeyError:
+    except KeyError as e:
+        print(e)
         raise RequestError(general_error, 400)
 
     # converts to list
@@ -107,6 +114,72 @@ def project_preview():
                 project.tags.append(tag)
 
     # commits
+    db.session.commit()
+
+    return json.dumps([get_project(project)])
+
+
+# creates a payment intent
+@bp.route('/api/v1/payment_intent', methods=['POST'])
+def payment_intent():
+
+    # gets the company email and source
+    try:
+        source = request.form['source']
+        company_email = request.form['email']
+    except KeyError as e:
+        print(e)
+        raise RequestError(general_error, 400)
+
+    # finds the company which is already created here
+    company = Company.query.filter_by(email=company_email.lower()).first()
+
+    # creates a stripe customer
+    try:
+        customer = stripe.Customer.create(
+            email=company.email,
+            description=company.name,
+            source=source,
+        )
+    except Exception as e:
+        print(e)
+        raise RequestError(general_error, 400)
+
+    # creates a payment intent
+    try:
+        payment_intent = stripe.PaymentIntent.create(
+            amount=9900,
+            currency="usd",
+            payment_method=source,
+            customer=customer,
+        )
+    except Exception as e:
+        print(e)
+        raise RequestError(
+            'Something went wrong while processing your payment. Please try again later.', 400)
+
+    return json.dumps({
+        "client_secret": payment_intent.client_secret,
+        "payment_intent_id": payment_intent.id,
+    })
+
+
+# publishes a project after payment
+@bp.route('/api/v1/publish_project', methods=['POST'])
+def publish_project():
+
+    # gets the project id
+    try:
+        project_id = request.form['id']
+    except KeyError as e:
+        print(e)
+        raise RequestError(general_error, 400)
+
+    # finds the project
+    project = Project.query.filter_by(id=project_id).first()
+
+    project.published = True
+
     db.session.commit()
 
     return json.dumps([get_project(project)])

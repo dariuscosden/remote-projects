@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 // internal dependencies
 //
+import Header from 'components/header';
 import useForm from 'components/use-form';
 import TextInput from 'components/text-input';
 import TextEditor from 'components/text-editor';
@@ -114,119 +115,143 @@ const PostProject = (props) => {
 
   return (
     <>
-      <div className="post">
-        <div className="post__headline">
-          <h1>
-            Post a <span className="main-green">project</span>.
-          </h1>
+      <Header white minimal />
+
+      <div className="post-bg">
+        <div className="post">
+          <div className="post__headline">
+            <h1>
+              Step 1: <span className="main-green">Describe your project</span>.
+            </h1>
+            <p>
+              Make sure to fill out the fields correctly and add as much detail
+              as you can. This information will then be used to find the best
+              candidates to complete your project.
+            </p>
+          </div>
+
+          <form className="post-form" onSubmit={handleOnSubmit}>
+            <div className="post-form__content">
+              <div className="post-form__row">
+                <TextInput
+                  name="title"
+                  label="Project Title"
+                  placeholder="Something like 'web application front-end' or 'kubernetes implementation'"
+                  onChange={handleOnChange}
+                  error={state['title'].error}
+                  required
+                  white
+                  defaultValue={post.formState.title.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TextInput
+                  name="restrictions"
+                  label="Project Restrictions"
+                  placeholder="For example: 'Europe Only' or 'UTC -1 to UTC +4'"
+                  onChange={handleOnChange}
+                  error={state['restrictions'].error}
+                  white
+                  defaultValue={post.formState.restrictions.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TextInput
+                  name="link"
+                  label="Application Link"
+                  placeholder="Link (or email) to where you want applicants to go"
+                  onChange={handleOnChange}
+                  error={state['link'].error}
+                  required
+                  white
+                  defaultValue={post.formState.link.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TextEditor
+                  name="description"
+                  label="Project Description"
+                  placeholder="Tell us a little bit about the project"
+                  required
+                  error={state['description'].error}
+                  onChange={handleOnChange}
+                  defaultValue={post.formState.description.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TagInput
+                  label="Project Tags"
+                  placeholder="Add a maximum of 5 tags for this project"
+                  suggestions={suggestions}
+                  onChange={(e) => handleSuggestions(e)}
+                  onTagEnter={handleOnChange}
+                  defaultValue={post.formState.tags.value}
+                />
+              </div>
+            </div>
+
+            <div className="post__headline">
+              <h1>
+                Step 2:{' '}
+                <span className="main-green">Describe your company</span>.
+              </h1>
+              <p>
+                If you have already posted a project on this platform before,
+                use the same email address you used in the past and we will
+                automatically link this project to the rest that belong to your
+                company.
+              </p>
+            </div>
+
+            <div className="post-form__content">
+              <div className="post-form__row">
+                <TextInput
+                  name="company_name"
+                  label="Company Name"
+                  placeholder="Maybe 'Google'?"
+                  onChange={handleOnChange}
+                  error={state['company_name'].error}
+                  required
+                  white
+                  defaultValue={post.formState.company_name.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TextInput
+                  name="company_email"
+                  label="Company Email"
+                  placeholder="We use this email to identify the company if you've posted before"
+                  onChange={handleOnChange}
+                  error={state['company_email'].error}
+                  required
+                  white
+                  defaultValue={post.formState.company_email.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TextInput
+                  name="company_location"
+                  label="Company Location"
+                  placeholder="City and country is usually better"
+                  onChange={handleOnChange}
+                  error={state['company_location'].error}
+                  required
+                  white
+                  defaultValue={post.formState.company_location.value}
+                />
+              </div>
+            </div>
+            <div className="post-form__row centered">
+              <Button text="Preview Your Post" />
+            </div>
+          </form>
         </div>
-
-        <form className="post-form" onSubmit={handleOnSubmit}>
-          <div className="post-form__content">
-            <div className="post-form__row">
-              <TextInput
-                name="title"
-                label="Project Title"
-                placeholder="Something like 'web application front-end' or 'kubernetes implementation'"
-                onChange={handleOnChange}
-                error={state['title'].error}
-                required
-                white
-                defaultValue={post.formState.title.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TextInput
-                name="company_name"
-                label="Company Name"
-                placeholder="Maybe 'Google'?"
-                onChange={handleOnChange}
-                error={state['company_name'].error}
-                required
-                white
-                defaultValue={post.formState.company_name.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TextInput
-                name="company_email"
-                label="Company Email"
-                placeholder="We use this email to identify the company if you've posted before"
-                onChange={handleOnChange}
-                error={state['company_email'].error}
-                required
-                white
-                defaultValue={post.formState.company_email.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TextInput
-                name="company_location"
-                label="Company Location"
-                placeholder="City and country is usually better"
-                onChange={handleOnChange}
-                error={state['company_location'].error}
-                required
-                white
-                defaultValue={post.formState.company_location.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TextInput
-                name="restrictions"
-                label="Restrictions"
-                placeholder="For example: 'Europe Only' or 'UTC -1 to UTC +4'"
-                onChange={handleOnChange}
-                error={state['restrictions'].error}
-                white
-                defaultValue={post.formState.restrictions.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TextInput
-                name="link"
-                label="Application Link"
-                placeholder="Link (or email) to where you want applicants to go"
-                onChange={handleOnChange}
-                error={state['link'].error}
-                required
-                white
-                defaultValue={post.formState.link.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TextEditor
-                name="description"
-                label="Project Description"
-                placeholder="Tell us a little bit about the project"
-                required
-                error={state['description'].error}
-                onChange={handleOnChange}
-                defaultValue={post.formState.description.value}
-              />
-            </div>
-
-            <div className="post-form__row">
-              <TagInput
-                label="Project Tags"
-                placeholder="Add a maximum of 5 tags for this project"
-                suggestions={suggestions}
-                onChange={(e) => handleSuggestions(e)}
-                onTagEnter={handleOnChange}
-                defaultValue={post.formState.tags.value}
-              />
-            </div>
-          </div>
-          <div className="post-form__row centered">
-            <Button text="Preview Your Post" />
-          </div>
-        </form>
       </div>
 
       <Footer hideTop />

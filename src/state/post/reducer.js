@@ -14,6 +14,8 @@ const initialState = {
     description: { value: '', error: '' },
     tags: { value: '', error: '' },
   },
+  client_secret: null,
+  payment_intent_id: null,
 };
 
 export default function(state = initialState, action) {
@@ -29,6 +31,17 @@ export default function(state = initialState, action) {
         projectId: action.payload.normalizedData.result[0],
         formState: action.payload.formState,
       });
+    }
+
+    case 'SEND_PAYMENT_INTENT_SUCCESS': {
+      return Object.assign({}, state, {
+        client_secret: action.payload.client_secret,
+        payment_intent_id: action.payload.payment_intent_id,
+      });
+    }
+
+    case 'SEND_PUBLISH_PROJECT_SUCCESS': {
+      return initialState;
     }
   }
 

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 
 // internal dependencies
 //
+import ProjectPage from 'layout/project-page';
 
 const PostPreview = (props) => {
   const { post } = props;
 
-  return <div className="post-preview" />;
+  return <ProjectPage preview p={post.projectId} />;
 };
 
 const mapStateToProps = (state) => ({

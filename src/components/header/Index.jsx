@@ -12,7 +12,7 @@ import Button from 'components/button';
 import history from 'utils/history';
 
 const Header = (props) => {
-  const { white } = props;
+  const { white, minimal } = props;
 
   const headerClassNames = classNames({
     header: true,
@@ -30,15 +30,17 @@ const Header = (props) => {
           </div>
 
           <div className="right">
-            <div className="header-content__menu">
-              <NavLink to="/">Find a Project</NavLink>
-              <NavLink to="/about">About</NavLink>
-              <Button
-                secondary
-                text="Post A Project"
-                onClick={() => history.push('/post/new-project')}
-              />
-            </div>
+            {!minimal && (
+              <div className="header-content__menu">
+                <NavLink to="/">Find a Project</NavLink>
+                <NavLink to="/about">About</NavLink>
+                <Button
+                  secondary
+                  text="Post A Project"
+                  onClick={() => history.push('/post/new-project')}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

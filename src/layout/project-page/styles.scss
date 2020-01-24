@@ -1,14 +1,30 @@
 // components - project-page
 //
 
-.project-page {
+.project-page__bg {
+  padding-top: 150px;
+  padding-bottom: 100px;
+  background-color: $light-green;
+}
+
+.project-page__wrapper {
   @include container;
-  margin-top: 100px;
-  margin-bottom: 100px;
+}
+
+.project-page {
+  box-shadow: 0 0 5px $black-30;
+  background-color: white;
+  border-radius: 5px;
+  padding: 40px;
+
+  &.is-preview {
+    margin-bottom: 75px;
+  }
 }
 
 .project-page__back-button {
-  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   color: $main-green;
   font-weight: bold;
   margin-bottom: 20px;
@@ -19,17 +35,8 @@
   }
 }
 
-.project-page__content {
-  @include flex-rw-sb-fs;
-
-  .left {
-    width: 70%;
-    margin-right: 40px;
-  }
-
-  .right {
-    width: 30%;
-  }
+.project-page__header {
+  margin-bottom: 20px;
 }
 
 .project-page__date {
@@ -76,9 +83,20 @@
   border-bottom: 1px solid $black-10;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
-.project-page__box {
-  @include flex-cl-c-c;
+.project-page__bottom-button {
+  @include flex-rw-c-c;
+  width: 100%;
+
+  a {
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
+.project-page__payment-button {
+  @include flex-rw-c-c;
+  width: 100%;
 }

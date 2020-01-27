@@ -1,0 +1,58 @@
+// components - footer
+//
+
+.footer-bg {
+  width: 100%;
+  background-color: $light-gray;
+}
+
+.footer {
+  @include flex-cl-c-c;
+  @include container;
+  width: 100%;
+}
+
+.footer-top {
+  @include flex-rw-sb-c;
+  width: 100%;
+  min-height: 250px;
+}
+
+.footer-top__column {
+  @include flex-cl-c-fs;
+
+  &.right {
+    text-align: right;
+    max-width: 300px;
+    align-items: flex-end;
+  }
+
+  a {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+
+    &:visited {
+      color: black;
+    }
+  }
+}
+
+.footer-bottom {
+  @include flex-rw-c-c;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  background-color: white;
+  text-align: center;
+
+  span {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  img {
+    width: 70px;
+    margin-right: 5px;
+  }
+}

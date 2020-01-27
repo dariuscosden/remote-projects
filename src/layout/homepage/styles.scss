@@ -1,0 +1,55 @@
+// layout - Homepage
+//
+
+#particles-js {
+  @include shadow-full;
+  position: absolute;
+  height: 600px;
+  width: 100%;
+  z-index: -1;
+  background-color: $dark-gray;
+}
+
+.homepage-header {
+  @include flex-cl-c-c;
+  width: 100%;
+  color: white;
+  height: 600px;
+
+  h1 {
+    font-size: 75px;
+  }
+
+  p {
+    margin-bottom: 40px;
+  }
+
+  .search-input {
+    margin-bottom: 40px;
+    max-width: 400px;
+    color: white;
+  }
+}
+
+.homepage-particles {
+  width: 100%;
+  background-color: black;
+}
+
+.homepage-projects {
+  @include container;
+  padding-top: 50px;
+  margin-bottom: 100px;
+
+  .project-card {
+    margin-bottom: 20px;
+  }
+}
+
+.homepage-projects__headline {
+  margin-bottom: 20px;
+
+  p {
+    margin: 5px 0;
+  }
+}

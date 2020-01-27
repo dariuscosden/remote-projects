@@ -1,0 +1,62 @@
+// components - radio-input
+//
+
+.radio-input {
+  position: relative;
+  width: 100%;
+
+  .input {
+    margin-bottom: 7px;
+  }
+
+  .placeholder {
+    color: $black-40;
+    font-size: 14px;
+
+    &.error {
+      color: red;
+    }
+  }
+}
+
+.radio-input__container {
+  @include flex-rw-fs-c;
+  display: inline-flex;
+  margin-right: 20px;
+
+  .label {
+    margin-right: 10px;
+  }
+}
+
+.radio-input__inner-label {
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+
+  &:after {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f0c8';
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  &:checked {
+    &:after {
+      content: '\f14a';
+      font-weight: 900;
+      color: $main-green;
+    }
+  }
+}
+
+label {
+  font-size: 16px;
+}

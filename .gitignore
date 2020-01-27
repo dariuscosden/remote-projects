@@ -1,0 +1,33 @@
+# python files
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# flask
+.flaskenv
+instance/
+
+# react
+node_modules/
+assets/js/bundle.js
+
+# scss
+*.map
+main/*.css
+.sass-cache/
+assets/css/styles.css
+
+# vscode files
+.vscode/
+*.code-workspace
+
+# personal files
+checklist.txt
+notes.txt
+
+# misc
+.coverage
+htmlcov/
+build/
+*.egg-info/
+.DS_Store

@@ -1,0 +1,67 @@
+// components - header
+//
+
+.header__container {
+}
+
+.header {
+  transition: all 0.2s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: white;
+  z-index: 100;
+
+  &.is-white {
+    box-shadow: 0 0 5px $black-30;
+    background-color: white;
+
+    .button {
+      background-color: $main-green;
+      color: white;
+
+      &:hover {
+        background-color: $main-green-dark;
+      }
+    }
+
+    h2 {
+      color: black;
+      cursor: pointer;
+    }
+
+    a {
+      color: black;
+
+      &:visited {
+        color: black;
+      }
+    }
+  }
+}
+
+.header-content__wrapper {
+  @include flex-rw-sb-c;
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header-content__menu {
+  @include flex-rw-sb-c;
+
+  .button {
+    margin-left: 20px;
+  }
+
+  a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: white;
+
+    &:visited {
+      color: white;
+    }
+  }
+}

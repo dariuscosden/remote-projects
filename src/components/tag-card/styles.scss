@@ -1,0 +1,21 @@
+// components - tag-card
+//
+
+.tag-card {
+  display: inline-block;
+  color: white;
+  background-color: $main-green;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-weight: bold;
+
+  &.is-custom {
+    background-color: transparent;
+    border: 1px solid $main-green;
+    color: $main-green;
+    font-weight: normal;
+    padding: 4px 9px;
+  }
+}

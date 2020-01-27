@@ -1,0 +1,60 @@
+// components - project-card
+//
+
+.project-card {
+  @include flex-rw-sb-c;
+  transition: all 0.1s ease;
+  border: 1px solid $light-gray;
+  width: 100%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  background-color: $light-green;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $light-green-hover;
+  }
+
+  .left {
+    width: 50%;
+  }
+
+  .middle {
+    width: 30%;
+  }
+
+  .right {
+    width: 20%;
+    text-align: center;
+  }
+}
+
+.project-card__restrictions {
+  color: red;
+  font-weight: bold;
+}
+
+.project-card__title {
+  margin: 10px 0;
+  color: $dark-gray;
+}
+
+.project-card__location {
+  font-style: italic;
+  line-height: 25px;
+
+  i {
+    margin-right: 5px;
+    color: $main-green;
+  }
+}
+
+.project-card__date {
+  font-weight: bold;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+}

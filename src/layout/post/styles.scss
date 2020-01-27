@@ -2,7 +2,7 @@
 //
 
 .post-bg {
-  background-color: $light-green;
+  background-color: $light-purple;
   padding-top: 150px;
   padding-bottom: 50px;
 }
@@ -28,11 +28,11 @@
   border-radius: 10px;
 
   input[type='text'] {
-    border-color: $light-green-dark;
+    border-color: $light-purple-dark;
     border-radius: 10px;
 
     &.is-focused {
-      border-color: $main-green;
+      border-color: $main-purple;
     }
 
     &.is-errored {
@@ -40,7 +40,7 @@
     }
 
     &.is-filled {
-      border-color: $main-green;
+      border-color: $main-purple;
     }
   }
 }
@@ -57,7 +57,7 @@
 //
 
 .post-payment__bg {
-  background-color: $light-green;
+  background-color: $light-purple;
   padding-top: 150px;
   padding-bottom: 50px;
 }
@@ -73,7 +73,7 @@
 .post-payment__back-button {
   margin-left: auto;
   margin-right: auto;
-  color: $main-green;
+  color: $main-purple;
   font-weight: bold;
   margin-bottom: 20px;
   cursor: pointer;
@@ -88,16 +88,45 @@
   background-color: white;
   padding: 40px;
   border-radius: 5px;
+  margin-bottom: 40px;
+}
+
+.post-payment__total {
   margin-bottom: 50px;
+  width: 100%;
+  text-align: right;
 }
 
 .post-payment__button {
   @include flex-rw-c-c;
+  margin-bottom: 75px;
+}
+
+.post-payment__card-icons {
+  @include flex-rw-sb-c;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 30px;
+
+  i {
+    font-size: 50px;
+    color: $black-30;
+  }
+}
+
+.post-payment__trust {
+  @include flex-cl-c-c;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 // STRIPE ELEMENTS
 .StripeElement {
   border-radius: 10px;
-  border: 1px solid $light-green-dark;
+  border: 1px solid $light-purple-dark;
   padding: 10px 20px;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // internal dependencie
 //
@@ -16,9 +17,8 @@ const Footer = (props) => {
           {!hideTop && (
             <div className="footer-top">
               <div className="footer-top__column">
-                <a href="">Link 1</a>
-                <a href="">Link 2</a>
-                <a href="">Link 3</a>
+                <NavLink to="/terms">Terms & Conditions</NavLink>
+                <NavLink to="/privacy-policy">Privacy Policy</NavLink>
               </div>
               <div className="footer-top__column right">
                 <p>
@@ -35,7 +35,7 @@ const Footer = (props) => {
       </div>
 
       <div className="footer-bottom">
-        <span>Remote </span> <span className="main-green">Contracts.</span> | ©{' '}
+        <span>Remote </span> <span className="main-purple">Projects.</span> | ©{' '}
         {new Date().getFullYear()}
       </div>
     </>

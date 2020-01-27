@@ -19,12 +19,22 @@
 }
 
 .footer-top__column {
-  @include flex-cl-c-c;
+  @include flex-cl-c-fs;
 
   &.right {
     text-align: right;
     max-width: 300px;
     align-items: flex-end;
+  }
+
+  a {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+
+    &:visited {
+      color: black;
+    }
   }
 }
 

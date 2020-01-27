@@ -11,6 +11,7 @@ tags = db.Table('tags',
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     published = db.Column(db.Boolean, nullable=False)
+    demo = db.Column(db.Boolean, nullable=False)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     restrictions = db.Column(db.String)
@@ -31,6 +32,7 @@ class Project(db.Model):
         json_project = {
             "id": self.id,
             "published": self.published,
+            "demo": self.demo,
             "title": self.title,
             "description": self.description,
             "restrictions": self.restrictions,
@@ -78,6 +80,9 @@ class Company(db.Model):
     created_at = db.Column(db.Float, nullable=False)
     modified_at = db.Column(db.Float, nullable=False)
 
+    # stripe
+    stripe_id = db.Column(db.String)
+
     # projects relationship
     projects = db.relationship('Project', backref='company', lazy=True)
 
@@ -90,6 +95,7 @@ class Company(db.Model):
             "location": self.location,
             "email": self.email,
             "logo": self.logo,
+            "stripe_id": self.stripe_id,
             "created_at": self.created_at,
             "modified_at": self.modified_at,
         }

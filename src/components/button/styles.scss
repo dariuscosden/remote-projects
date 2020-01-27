@@ -6,12 +6,12 @@
   transition: all 0.3s ease;
   position: relative;
   color: white;
-  background-color: $main-green;
+  background-color: $main-purple;
   text-transform: uppercase;
   min-width: 200px;
 
   &:hover {
-    background-color: $main-green-dark;
+    background-color: $main-purple-dark;
   }
 
   &.is-secondary {

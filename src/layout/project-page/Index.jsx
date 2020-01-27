@@ -66,8 +66,10 @@ const ProjectPage = (props) => {
   };
 
   let date;
+  let demoDate;
   if (project) {
     date = new Date(project.created_at * 1000);
+    demoDate = new Date();
   }
 
   return (
@@ -83,15 +85,18 @@ const ProjectPage = (props) => {
             <i className="fas fa-arrow-left" /> Go Back
           </div>
 
-          <div className="project-page__header">
-            <h1>
-              Step 3: <span className="main-green">Review your post</span>.
-            </h1>
-            <p>
-              Review your post before proceeding. Once the post has been
-              finalized and the payment made, it can no longer be edited.
-            </p>
-          </div>
+          {preview && (
+            <div className="project-page__header">
+              <h1>
+                Step 3:{' '}
+                <span className="main-purple">Review your project post</span>.
+              </h1>
+              <p>
+                Review your project post before proceeding. Once the post has
+                been finalized and the payment made, it can no longer be edited.
+              </p>
+            </div>
+          )}
 
           <div className={projectPageClassNames}>
             <div className={contentClassNames}>
@@ -99,11 +104,12 @@ const ProjectPage = (props) => {
                 {project ? (
                   <>
                     {preview
-                      ? 'You are viewing a preview of this post'
-                      : `Posted on ${date.toLocaleDateString(
-                          'en-US',
-                          dateOptions,
-                        )}`}
+                      ? 'You are viewing a preview of this project post'
+                      : `Posted on ${
+                          project.demo
+                            ? demoDate.toLocaleDateString('en-US', dateOptions)
+                            : date.toLocaleDateString('en-US', dateOptions)
+                        }`}
                   </>
                 ) : (
                   'Loading...'
@@ -124,6 +130,11 @@ const ProjectPage = (props) => {
               )}
 
               <div className="project-page__tags">
+                {project && project.demo && (
+                  <TagCard customTag="Demo Project" />
+                )}
+                <br />
+
                 {project &&
                   project.tags.map((t) => {
                     return <TagCard key={t} t={t} />;

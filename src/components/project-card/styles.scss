@@ -8,12 +8,12 @@
   width: 100%;
   padding: 20px 20px;
   box-sizing: border-box;
-  background-color: $light-green;
+  background-color: $light-purple;
   border-radius: 5px;
 
   &:hover {
     cursor: pointer;
-    background-color: $light-green-hover;
+    background-color: $light-purple-hover;
   }
 
   .left {
@@ -46,7 +46,7 @@
 
   i {
     margin-right: 5px;
-    color: $main-green;
+    color: $main-purple;
   }
 }
 

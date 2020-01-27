@@ -5,7 +5,7 @@ import React from 'react';
 const classNames = require('classnames');
 
 const Button = (props) => {
-  const { disabled, secondary, onClick, style, text } = props;
+  const { disabled, loading, secondary, onClick, style, text } = props;
 
   // classnames
   const className = classNames({
@@ -33,14 +33,14 @@ const Button = (props) => {
   return (
     <button
       className={className}
-      onClick={disabled ? null : onClick}
+      onClick={disabled || loading ? null : onClick}
       onMouseDown={disabled ? null : pushDown}
       onMouseUp={disabled ? null : release}
       onTouchStart={disabled ? null : pushDown}
       onTouchEnd={disabled ? null : release}
       style={style}
     >
-      {text}
+      {loading ? 'Processing...' : text}
     </button>
   );
 };

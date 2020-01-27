@@ -22,6 +22,7 @@ const ProjectCard = (props) => {
     month: 'short',
   };
   const date = new Date(project.created_at * 1000);
+  const demoDate = new Date();
 
   return (
     <div
@@ -44,6 +45,9 @@ const ProjectCard = (props) => {
 
       <div className="middle">
         <div className="contact-card__tags">
+          {project.demo && <TagCard customTag="Demo Project" />}
+          <br />
+
           {project.tags.map((t) => {
             return <TagCard key={t} t={t} />;
           })}
@@ -52,7 +56,9 @@ const ProjectCard = (props) => {
 
       <div className="right">
         <div className="project-card__date">
-          {date.toLocaleDateString('en-US', dateOptions)}
+          {project.demo
+            ? demoDate.toLocaleDateString('en-US', dateOptions)
+            : date.toLocaleDateString('en-US', dateOptions)}
         </div>
       </div>
     </div>

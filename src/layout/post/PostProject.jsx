@@ -5,13 +5,18 @@ import { connect } from 'react-redux';
 //
 import Header from 'components/header';
 import useForm from 'components/use-form';
+import RadioInput from 'components/radio-input';
 import TextInput from 'components/text-input';
 import TextEditor from 'components/text-editor';
 import Button from 'components/button';
 import TagInput from 'components/tag-input';
 import Footer from 'components/footer';
 
-import { standardCharacters, standardEmail } from 'utils/input-validators';
+import {
+  standardCharacters,
+  standardEmail,
+  standardLink,
+} from 'utils/input-validators';
 
 import { fetchTags } from 'state/tags/actions';
 import { sendProjectPreview } from 'state/post/actions';
@@ -58,8 +63,8 @@ const PostProject = (props) => {
     link: {
       required: true,
       validator: {
-        regEx: /.{1,200}$/,
-        error: 'Please keep the application link to under 200 characters.',
+        regEx: standardLink,
+        error: 'Please enter a valid link or email address.',
       },
     },
     description: {
@@ -121,12 +126,13 @@ const PostProject = (props) => {
         <div className="post">
           <div className="post__headline">
             <h1>
-              Step 1: <span className="main-green">Describe your project</span>.
+              Step 1: <span className="main-purple">Describe your project</span>
+              .
             </h1>
             <p>
-              Make sure to fill out the fields correctly and add as much detail
-              as you can. This information will then be used to find the best
-              candidates to complete your project.
+              Fill the fields correctly and add as much information as you can.
+              This information will be used to find the best candidate to
+              complete the project.
             </p>
           </div>
 
@@ -136,7 +142,7 @@ const PostProject = (props) => {
                 <TextInput
                   name="title"
                   label="Project Title"
-                  placeholder="Something like 'web application front-end' or 'kubernetes implementation'"
+                  placeholder="E.g. 'front-end developer' or 'project manager'"
                   onChange={handleOnChange}
                   error={state['title'].error}
                   required
@@ -149,7 +155,7 @@ const PostProject = (props) => {
                 <TextInput
                   name="restrictions"
                   label="Project Restrictions"
-                  placeholder="For example: 'Europe Only' or 'UTC -1 to UTC +4'"
+                  placeholder="E.g. 'Europe Only' or 'UTC -1 to UTC +4'"
                   onChange={handleOnChange}
                   error={state['restrictions'].error}
                   white
@@ -160,8 +166,8 @@ const PostProject = (props) => {
               <div className="post-form__row">
                 <TextInput
                   name="link"
-                  label="Application Link"
-                  placeholder="Link (or email) to where you want applicants to go"
+                  label="How To Apply"
+                  placeholder="Link to application page or email address"
                   onChange={handleOnChange}
                   error={state['link'].error}
                   required
@@ -197,7 +203,7 @@ const PostProject = (props) => {
             <div className="post__headline">
               <h1>
                 Step 2:{' '}
-                <span className="main-green">Describe your company</span>.
+                <span className="main-purple">Describe your company</span>.
               </h1>
               <p>
                 If you have already posted a project on this platform before,
@@ -208,19 +214,6 @@ const PostProject = (props) => {
             </div>
 
             <div className="post-form__content">
-              <div className="post-form__row">
-                <TextInput
-                  name="company_name"
-                  label="Company Name"
-                  placeholder="Maybe 'Google'?"
-                  onChange={handleOnChange}
-                  error={state['company_name'].error}
-                  required
-                  white
-                  defaultValue={post.formState.company_name.value}
-                />
-              </div>
-
               <div className="post-form__row">
                 <TextInput
                   name="company_email"
@@ -236,9 +229,22 @@ const PostProject = (props) => {
 
               <div className="post-form__row">
                 <TextInput
+                  name="company_name"
+                  label="Company Name"
+                  placeholder="E.g. 'Google'"
+                  onChange={handleOnChange}
+                  error={state['company_name'].error}
+                  required
+                  white
+                  defaultValue={post.formState.company_name.value}
+                />
+              </div>
+
+              <div className="post-form__row">
+                <TextInput
                   name="company_location"
                   label="Company Location"
-                  placeholder="City and country is usually better"
+                  placeholder="E.g. Frankfurt, Germany"
                   onChange={handleOnChange}
                   error={state['company_location'].error}
                   required
@@ -248,7 +254,7 @@ const PostProject = (props) => {
               </div>
             </div>
             <div className="post-form__row centered">
-              <Button text="Preview Your Post" />
+              <Button text="Preview Your Project" loading={post.loading} />
             </div>
           </form>
         </div>

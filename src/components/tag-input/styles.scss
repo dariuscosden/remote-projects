@@ -4,7 +4,7 @@
 .ReactTags__tag {
   display: inline-block;
   color: white;
-  background-color: $main-green;
+  background-color: $main-purple;
   margin-right: 10px;
   margin-top: 10px;
   padding: 5px 10px;
@@ -34,7 +34,7 @@
 }
 
 .ReactTags__suggestions {
-  border: 1px solid $light-green-dark;
+  border: 1px solid $light-purple-dark;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top: 0;
@@ -53,7 +53,7 @@
     margin: 0 !important;
 
     mark {
-      color: $main-green;
+      color: $main-purple;
       background: none;
       font-weight: 600;
     }

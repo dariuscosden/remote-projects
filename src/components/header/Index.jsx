@@ -25,7 +25,7 @@ const Header = (props) => {
         <div className="header-content__wrapper">
           <div className="left">
             <h2 onClick={() => history.push('/')}>
-              Remote <span className="main-green">Projects</span>.
+              Remote <span className="main-purple">Projects</span>.
             </h2>
           </div>
 
@@ -33,7 +33,6 @@ const Header = (props) => {
             {!minimal && (
               <div className="header-content__menu">
                 <NavLink to="/">Find a Project</NavLink>
-                <NavLink to="/about">About</NavLink>
                 <Button
                   secondary
                   text="Post A Project"

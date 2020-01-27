@@ -17,11 +17,19 @@ import history from 'utils/history';
 import { sendPaymentIntent, sendPublishProject } from 'state/post/actions';
 
 const PostPreview = (props) => {
-  const { post, sendPaymentIntent, stripe, sendPublishProject } = props;
+  const {
+    dispatch,
+    post,
+    sendPaymentIntent,
+    stripe,
+    sendPublishProject,
+  } = props;
 
   // handles submit payment
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch({ type: 'SET_POST_LOADING' });
 
     // creates a source and sends for a payment intent
     stripe
@@ -34,7 +42,7 @@ const PostPreview = (props) => {
       })
       .then((source) => {
         if (source.error) {
-          console.log(source.error);
+          dispatch({ type: 'RESET_POST_LOADING' });
           return;
         }
 
@@ -68,22 +76,52 @@ const PostPreview = (props) => {
           </div>
           <div className="post-payment__header">
             <h1>
-              Step 4: <span className="main-green">Payment</span>.
+              Step 4: <span className="main-purple">Payment</span>.
             </h1>
             <p>
               Please enter your card information on this page to finalize your
-              post.
+              project post.
             </p>
           </div>
 
           <div className="post-payment__content">
-            <CardElement />
+            <div className="post-payment__card-element">
+              <CardElement />
+            </div>
+          </div>
+
+          <div className="post-payment__total">
+            <h1>
+              Your total is: <span className="main-purple">$149</span>.
+            </h1>
           </div>
         </div>
 
         <div className="post-payment__button">
-          <Button text="Finalize Post" onClick={handleSubmit} />
+          <Button
+            text="Pay & Submit Project"
+            onClick={handleSubmit}
+            loading={post.loading}
+          />
         </div>
+
+        <div className="post-payment__card-icons">
+          <i className="fab fa-cc-visa" />
+          <i className="fab fa-cc-mastercard" />
+          <i className="fab fa-cc-discover" />
+          <i className="fab fa-cc-amex" />
+        </div>
+      </div>
+
+      <div className="post-payment__trust">
+        <h2>
+          "Remote Projects is the best website to find remote projects. My
+          experience with them has been holesome and complete. I am really happy
+          with the website."
+        </h2>
+        <p>
+          <i>- Darius Cosden, Founder of Remote Projects</i>
+        </p>
       </div>
 
       <Footer hideTop />

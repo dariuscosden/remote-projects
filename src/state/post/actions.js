@@ -16,6 +16,8 @@ import { projectSchema } from 'utils/schema';
 // SEND PROJECT REVIEW
 //
 export const sendProjectPreview = (formState, projectId) => (dispatch) => {
+  dispatch({ type: 'SEND_PROJECT_PREVIEW', error: '' });
+
   // form data
   const formData = new FormData();
   _.keys(formState).map((field) => {
@@ -56,6 +58,8 @@ const sendProjectPreviewError = (error) => (dispatch) => {
 // SEND PAYMENT INTENT
 //
 export const sendPaymentIntent = (source, email) => (dispatch) => {
+  dispatch({ type: 'SEND_PAYMENT_INTENT', error: '' });
+
   // form data
   const formData = new FormData();
   formData.append('source', source);
@@ -100,6 +104,7 @@ const sendPublishProjectSuccess = (projects) => (dispatch) => {
   dispatch({
     type: 'SEND_PUBLISH_PROJECT_SUCCESS',
     payload: normalizedData,
+    message: 'Your project has been successfully posted!',
   });
 
   history.push('/');

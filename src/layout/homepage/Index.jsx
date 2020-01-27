@@ -56,18 +56,23 @@ const Homepage = (props) => {
       <div className="homepage">
         <div className="homepage-header">
           <h1>Remote Projects.</h1>
-          <p>Find fixed-term, remote contract work. No permanent jobs.</p>
+          <p>
+            The best place to find and list remote projects from all over the
+            world.
+          </p>
 
+          {/*
           <input
             className="search-input"
             type="text"
             placeholder="ex. react, vuejs, python, go, php"
           />
+*/}
 
           <ButtonGroup>
             <Button
               secondary
-              text="Post a project for $249"
+              text="Post a project for $299"
               onClick={() => history.push('/post/new-project')}
             />
             <Button text="Find a project" />
@@ -75,7 +80,18 @@ const Homepage = (props) => {
         </div>
 
         <div className="homepage-projects">
-          <h1>Projects</h1>
+          <div className="homepage-projects__headline">
+            <h2>
+              We found{' '}
+              <span className="main-purple">{homepage.projects.length}</span>{' '}
+              remote project{homepage.projects.length > 1 && 's'}.
+            </h2>
+
+            <p>
+              <i>Last updated just now</i>
+            </p>
+          </div>
+
           {homepage.fetched ? (
             <>
               {homepage.projects.map((p) => {

@@ -71,6 +71,7 @@ def project_preview():
         # creates a project
         project = Project(
             published=False,
+            demo=False,
             title=title,
             description=description,
             restrictions=restrictions,
@@ -134,16 +135,35 @@ def payment_intent():
     # finds the company which is already created here
     company = Company.query.filter_by(email=company_email.lower()).first()
 
+    # checks for stripe customer
+    customer = None
+    if company.stripe_id:
+        try:
+            # updates source
+            customer = stripe.Customer.modify(
+                company.stripe_id,
+                source=source
+            )
+        except Exception as e:
+            print(e)
+            raise RequestError(general_error, 400)
+
     # creates a stripe customer
-    try:
-        customer = stripe.Customer.create(
-            email=company.email,
-            description=company.name,
-            source=source,
-        )
-    except Exception as e:
-        print(e)
-        raise RequestError(general_error, 400)
+    if not customer:
+        try:
+            customer = stripe.Customer.create(
+                email=company.email,
+                description=company.name,
+                source=source,
+            )
+
+            # adds it to company
+            company.stripe_id = customer.id
+            db.session.commit()
+
+        except Exception as e:
+            print(e)
+            raise RequestError(general_error, 400)
 
     # creates a payment intent
     try:

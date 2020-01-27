@@ -35,7 +35,7 @@ const Footer = (props) => {
       </div>
 
       <div className="footer-bottom">
-        <span>Remote </span> <span className="main-purple">Projects.</span> | ©{' '}
+        <span>Remote </span> <span className="main-green">Projects.</span> | ©{' '}
         {new Date().getFullYear()}
       </div>
     </>

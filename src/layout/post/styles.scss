@@ -2,7 +2,7 @@
 //
 
 .post-bg {
-  background-color: $light-purple;
+  background-color: $light-green;
   padding-top: 150px;
   padding-bottom: 50px;
 }
@@ -28,11 +28,11 @@
   border-radius: 10px;
 
   input[type='text'] {
-    border-color: $light-purple-dark;
+    border-color: $light-green-dark;
     border-radius: 10px;
 
     &.is-focused {
-      border-color: $main-purple;
+      border-color: $main-green;
     }
 
     &.is-errored {
@@ -40,7 +40,7 @@
     }
 
     &.is-filled {
-      border-color: $main-purple;
+      border-color: $main-green;
     }
   }
 }
@@ -57,7 +57,7 @@
 //
 
 .post-payment__bg {
-  background-color: $light-purple;
+  background-color: $light-green;
   padding-top: 150px;
   padding-bottom: 50px;
 }
@@ -73,7 +73,7 @@
 .post-payment__back-button {
   margin-left: auto;
   margin-right: auto;
-  color: $main-purple;
+  color: $main-green;
   font-weight: bold;
   margin-bottom: 20px;
   cursor: pointer;
@@ -127,6 +127,6 @@
 // STRIPE ELEMENTS
 .StripeElement {
   border-radius: 10px;
-  border: 1px solid $light-purple-dark;
+  border: 1px solid $light-green-dark;
   padding: 10px 20px;
 }

@@ -25,7 +25,7 @@ const Header = (props) => {
         <div className="header-content__wrapper">
           <div className="left">
             <h2 onClick={() => history.push('/')}>
-              Remote <span className="main-purple">Projects</span>.
+              Remote <span className="main-green">Projects</span>.
             </h2>
           </div>
 

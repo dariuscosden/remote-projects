@@ -89,7 +89,7 @@ const ProjectPage = (props) => {
             <div className="project-page__header">
               <h1>
                 Step 3:{' '}
-                <span className="main-purple">Review your project post</span>.
+                <span className="main-green">Review your project post</span>.
               </h1>
               <p>
                 Review your project post before proceeding. Once the post has

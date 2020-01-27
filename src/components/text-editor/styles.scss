@@ -6,7 +6,7 @@
 }
 
 .text-editor__toolbar {
-  border: 1px solid $light-purple-dark !important;
+  border: 1px solid $light-green-dark !important;
   border-radius: 10px !important;
   margin-bottom: 10px !important;
 }
@@ -15,7 +15,7 @@
   min-height: 200px;
   padding: 0 20px;
   border-radius: 10px;
-  border: 1px solid $light-purple-dark;
+  border: 1px solid $light-green-dark;
   margin-bottom: 7px;
 
   &:hover {
@@ -23,11 +23,11 @@
   }
 
   &.is-focused {
-    border-color: $main-purple;
+    border-color: $main-green;
   }
 
   &.is-filled {
-    border-color: $main-purple;
+    border-color: $main-green;
     background: url(/assets/img/shared/check.svg) no-repeat scroll 99% 10px;
     background-size: 20px;
   }

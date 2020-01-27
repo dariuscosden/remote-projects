@@ -168,7 +168,7 @@ def payment_intent():
     # creates a payment intent
     try:
         payment_intent = stripe.PaymentIntent.create(
-            amount=9900,
+            amount=29900,
             currency="usd",
             payment_method=source,
             customer=customer,

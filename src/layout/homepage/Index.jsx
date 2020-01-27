@@ -83,7 +83,7 @@ const Homepage = (props) => {
           <div className="homepage-projects__headline">
             <h2>
               We found{' '}
-              <span className="main-purple">{homepage.projects.length}</span>{' '}
+              <span className="main-green">{homepage.projects.length}</span>{' '}
               remote project{homepage.projects.length > 1 && 's'}.
             </h2>
 

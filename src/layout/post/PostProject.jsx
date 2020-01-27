@@ -126,8 +126,7 @@ const PostProject = (props) => {
         <div className="post">
           <div className="post__headline">
             <h1>
-              Step 1: <span className="main-purple">Describe your project</span>
-              .
+              Step 1: <span className="main-green">Describe your project</span>.
             </h1>
             <p>
               Fill the fields correctly and add as much information as you can.
@@ -203,7 +202,7 @@ const PostProject = (props) => {
             <div className="post__headline">
               <h1>
                 Step 2:{' '}
-                <span className="main-purple">Describe your company</span>.
+                <span className="main-green">Describe your company</span>.
               </h1>
               <p>
                 If you have already posted a project on this platform before,

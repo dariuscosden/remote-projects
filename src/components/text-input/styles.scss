@@ -37,11 +37,11 @@ input[type='text'] {
   background-color: transparent;
 
   &.is-white {
-    border: 1px solid $light-purple;
+    border: 1px solid $light-green;
   }
 
   &.is-focused {
-    border: 1px solid $main-purple;
+    border: 1px solid $main-green;
   }
 
   &.is-errored {
@@ -49,7 +49,7 @@ input[type='text'] {
   }
 
   &.is-filled {
-    border: 1px solid $main-purple;
+    border: 1px solid $main-green;
     background: url(/assets/img/shared/check.svg) no-repeat scroll 98% 10px;
     background-size: 20px;
   }

@@ -76,7 +76,7 @@ const PostPreview = (props) => {
           </div>
           <div className="post-payment__header">
             <h1>
-              Step 4: <span className="main-purple">Payment</span>.
+              Step 4: <span className="main-green">Payment</span>.
             </h1>
             <p>
               Please enter your card information on this page to finalize your
@@ -92,7 +92,7 @@ const PostPreview = (props) => {
 
           <div className="post-payment__total">
             <h1>
-              Your total is: <span className="main-purple">$149</span>.
+              Your total is: <span className="main-green">$299</span>.
             </h1>
           </div>
         </div>

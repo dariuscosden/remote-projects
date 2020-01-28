@@ -19,10 +19,13 @@ def create_app():
     # loads config
     config = Path(os.path.join(app.instance_path, 'config.py'))
 
-    from instance.config import dev_config
-
     # dev config
-    app.config.from_object(dev_config)
+    # from instance.config import dev_config
+    # app.config.from_object(dev_config)
+
+    # prod config
+    from instance.config import prod_config
+    app.config.from_object(prod_config)
 
     # views
     with app.app_context():

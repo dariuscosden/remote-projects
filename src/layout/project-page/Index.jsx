@@ -72,6 +72,11 @@ const ProjectPage = (props) => {
     demoDate = new Date();
   }
 
+  // page title
+  useEffect(() => {
+    document.title = `${project.title} - Remote Projects`;
+  }, []);
+
   return (
     <>
       <Header white minimal={preview} />

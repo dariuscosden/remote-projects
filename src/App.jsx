@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <StripeProvider apiKey="pk_test_07RGMUTSho0UwNJpDYUoQBIn00c1TOTRiD">
+        <StripeProvider apiKey="pk_live_j04oB2kcvIDGzgIQisFfaCH700pksN5haU">
           <Router history={history}>
             <Layout />
           </Router>

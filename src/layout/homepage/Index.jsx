@@ -16,6 +16,11 @@ import { fetchProjects } from 'state/projects/actions';
 const Homepage = (props) => {
   const { projects, homepage, fetchProjects } = props;
 
+  // page title
+  useEffect(() => {
+    document.title = 'Home - Remote Projects';
+  }, []);
+
   // particles js
   useEffect(() => {
     particlesJS.load(

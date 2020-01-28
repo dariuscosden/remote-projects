@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 
 // external dependencies
@@ -12,6 +12,11 @@ import PostPreview from './PostPreview';
 import InjectedPostPayment from './PostPayment';
 
 const Post = (props) => {
+  // page title
+  useEffect(() => {
+    document.title = 'Post a Project - Remote Projects';
+  }, []);
+
   return (
     <Elements>
       <Switch>

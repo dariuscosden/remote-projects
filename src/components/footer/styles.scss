@@ -16,15 +16,28 @@
   @include flex-rw-sb-c;
   width: 100%;
   min-height: 250px;
+
+  @media (max-width: $large) {
+    @include flex-cl-c-c;
+  }
 }
 
 .footer-top__column {
   @include flex-cl-c-fs;
 
+  @media (max-width: $large) {
+    @include flex-cl-c-c;
+  }
+
   &.right {
     text-align: right;
     max-width: 300px;
     align-items: flex-end;
+
+    @media (max-width: $large) {
+      @include flex-cl-c-c;
+      text-align: center;
+    }
   }
 
   a {

@@ -74,7 +74,9 @@ const ProjectPage = (props) => {
 
   // page title
   useEffect(() => {
-    document.title = `${project.title} - Remote Projects`;
+    if (project && !preview) {
+      document.title = `${project.title} - Remote Projects`;
+    }
   }, []);
 
   return (

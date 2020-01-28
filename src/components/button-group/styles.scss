@@ -13,4 +13,19 @@
       margin-left: 10px;
     }
   }
+
+  @media (max-width: $large) {
+    @include flex-cl-c-c;
+
+    button {
+      &:first-child {
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
+
+      &:nth-child(2) {
+        margin-left: 0;
+      }
+    }
+  }
 }

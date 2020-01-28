@@ -24,15 +24,30 @@ const Header = (props) => {
       <div className={headerClassNames}>
         <div className="header-content__wrapper">
           <div className="left">
-            <h2 onClick={() => history.push('/')}>
-              Remote <span className="main-green">Projects</span>.
-            </h2>
+            <div className="header-content__logo desktop">
+              <h2 onClick={() => history.push('/')}>
+                Remote <span className="main-green">Projects</span>.
+              </h2>
+            </div>
+
+            <div
+              className="header-content__logo mobile"
+              onClick={() => history.push('/')}
+            >
+              {white ? (
+                <img src="/assets/img/shared/logo-small.png" />
+              ) : (
+                <img src="/assets/img/shared/logo-small-white.png" />
+              )}
+            </div>
           </div>
 
           <div className="right">
             {!minimal && (
               <div className="header-content__menu">
-                <NavLink to="/">Find a Project</NavLink>
+                <div className="header-content__find-project">
+                  <NavLink to="/">Find a Project</NavLink>
+                </div>
                 <Button
                   secondary
                   text="Post A Project"

@@ -28,6 +28,26 @@
     width: 20%;
     text-align: center;
   }
+
+  @media (max-width: $large) {
+    @include flex-cl-c-c;
+
+    .left {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .middle {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .right {
+      width: 100%;
+      padding-top: 20px;
+      border-top: 1px solid $light-green-dark;
+    }
+  }
 }
 
 .project-card__restrictions {

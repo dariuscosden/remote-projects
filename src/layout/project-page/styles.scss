@@ -17,6 +17,10 @@
   border-radius: 5px;
   padding: 40px;
 
+  @media (max-width: $large) {
+    padding: 20px;
+  }
+
   &.is-preview {
     margin-bottom: 75px;
   }
@@ -84,6 +88,10 @@
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 50px;
+
+  @media (max-width: $large) {
+    margin-bottom: 20px;
+  }
 }
 
 .project-page__bottom-button {

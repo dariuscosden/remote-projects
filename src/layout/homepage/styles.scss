@@ -10,14 +10,26 @@
   background-color: $dark-gray;
 }
 
+.homepage {
+  @include container;
+}
+
 .homepage-header {
   @include flex-cl-c-c;
   width: 100%;
   color: white;
   height: 600px;
 
+  @media (max-width: $large) {
+    text-align: center;
+  }
+
   h1 {
     font-size: 75px;
+
+    @media (max-width: $large) {
+      font-size: 50px;
+    }
   }
 
   p {
@@ -37,7 +49,6 @@
 }
 
 .homepage-projects {
-  @include container;
   padding-top: 50px;
   margin-bottom: 100px;
 

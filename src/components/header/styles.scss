@@ -40,6 +40,25 @@
   }
 }
 
+.header-content__logo {
+  &.desktop {
+    @media (max-width: $large) {
+      display: none;
+    }
+  }
+
+  &.mobile {
+    display: none;
+    @media (max-width: $large) {
+      display: block;
+
+      img {
+        width: 50px;
+      }
+    }
+  }
+}
+
 .header-content__wrapper {
   @include flex-rw-sb-c;
   max-width: 1500px;
@@ -63,5 +82,11 @@
     &:visited {
       color: white;
     }
+  }
+}
+
+.header-content__find-project {
+  @media (max-width: $large) {
+    display: none;
   }
 }

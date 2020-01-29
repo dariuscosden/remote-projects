@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
+
+// external dependencies
+//
+import loadable from '@loadable/component';
 
 // internal dependencies
 //
 import Header from 'components/header';
 import Homepage from './homepage';
-import Post from './post';
-import ProjectPage from './project-page';
-import Terms from './terms';
-import PrivacyPolicy from './privacy-policy';
+
+const Post = loadable(() => import(/* webpackChunkName: "post" */ './post'));
+const ProjectPage = loadable(() =>
+  import(/* webpackChunkName: "project-page" */ './project-page'),
+);
+const Terms = loadable(() => import(/* webpackChunkName: "terms" */ './terms'));
+const PrivacyPolicy = loadable(() =>
+  import(/* webpackChunkName: "privacy-policy" */ './privacy-policy'),
+);
 
 import Error from 'components/error';
 import Message from 'components/message';
@@ -23,6 +32,14 @@ const Layout = (props) => {
   history.listen(() => {
     window.scrollTo(0, 0);
   });
+
+  // preloads on initial render
+  useEffect(() => {
+    Post.preload();
+    ProjectPage.preload();
+    Terms.preload();
+    PrivacyPolicy.preload();
+  }, []);
 
   return (
     <>

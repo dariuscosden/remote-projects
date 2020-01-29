@@ -5,7 +5,8 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'assets/js'),
     publicPath: 'assets/js/',
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],

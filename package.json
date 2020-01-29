@@ -10,6 +10,7 @@
   "author": "Cosden Solutions",
   "license": "ISC",
   "dependencies": {
+    "@loadable/component": "^5.12.0",
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",

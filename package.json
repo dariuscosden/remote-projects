@@ -18,7 +18,7 @@
     "draft-js": "^0.11.4",
     "draft-js-export-html": "^1.4.1",
     "html-to-draftjs": "^1.5.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "normalizr": "^3.4.1",
     "react": "^16.12.0",
     "react-dnd": "^5.0.0",
